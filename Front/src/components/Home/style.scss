@@ -1,0 +1,134 @@
+.home {
+  &__main {
+    padding: 3em;
+    position: relative;
+    &__title{
+        text-align: end;
+        font-size: 3em;
+        padding: 0em 3em;
+        color: black;
+        font-weight: bold;
+    }
+    &__section {
+      display: flex;
+      padding: 1.5em;
+      transition-duration: 0.5s;
+      transition-property: background-color;
+      background-color: rgb(255, 255, 255);
+      position: relative;
+      margin-bottom: 3rem;
+
+      &::before {
+        content: '';
+        width: 8rem;
+        height: 8rem;
+        position: absolute;
+        background-color: black;
+        top: -0.5rem;
+        left: -0.5rem;
+        z-index: -1;
+      }
+
+      &::after {
+        content: '';
+        width: 8rem;
+        height: 8rem;
+        position: absolute;
+        background-color: rgb(255,161,74);
+        bottom: -0.5rem;
+        right: -0.5rem;
+        z-index: -1;
+      }
+
+      &__image {
+        border-radius: 3em;
+      }
+      &__text {
+        padding: 0.5em;
+        & p {
+          font-size: 1.8em;
+        }
+      }
+      &__info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;    
+      }
+      &__info:nth-child(1) {
+        border-bottom-left-radius: 3em;
+        border-top-left-radius: 3em;
+        margin-bottom: 5em;
+      }
+      &__info:nth-child(2) {
+        border-bottom-right-radius: 3em;
+        border-top-right-radius: 3em;
+      }
+    }
+  }  
+}
+
+#root > div > div > div > header > div > div.divider.default.text {
+  color: black;
+  font-weight: bold;
+}
+
+#corner:before{
+  content: "";
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  border-style: solid;
+  height: 70px;
+  width: 70px;
+  display: block;
+  border-radius: 0pt 0pt 0pt 5px;
+  border-color: rgba(255, 161, 74, 0.8) rgba(255, 161 , 74, 0.8) rgba(45, 139 ,222, .5) rgba(45, 139, 222, .5);
+  border-width: 35px;
+  box-shadow: 10px 10px 10px rgba(45,139,222, .8);
+}
+
+
+@media (max-width: 1150px) {
+  .home__main {
+    &__title{
+      text-align: center;
+      display: block;
+    }
+    &__section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &__image {
+      width: 90%;
+    }
+    }
+  }
+  #root > div > div > div > main > section:nth-child(3) > div {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+}
+@media (max-width: 770px) {
+  .home__main {
+    &__title {
+      font-size: 1.5em;
+    }
+    &__section {
+    &__text {
+      font-size: 1em;
+    }
+    &__image {
+      width: 80%;
+    }
+  }
+  }
+  .footer {
+    font-size: 1.5em;
+  }
+}
+
+#root > div > div.home > main > section{
+  font-weight: bold;
+}

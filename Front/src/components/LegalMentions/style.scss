@@ -1,0 +1,19 @@
+.LegalMentions{
+    padding: 5em 5em 12em 5em;
+    & article{
+        padding: 5em;
+    }
+    & h1 {
+        text-align: center;
+        font-size: 2em;
+        font-weight: bold;
+        text-decoration: underline;
+    }
+    
+    & h3 {
+        text-decoration: underline;
+        color: rgb(58,102,177);
+        font-size: 1.3em;
+        font-weight: bold;
+    }
+}

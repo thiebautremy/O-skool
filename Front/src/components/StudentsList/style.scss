@@ -1,0 +1,134 @@
+//? Liste des éléves
+.studentsList {
+  padding: 0.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__header {
+    margin: 1em;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+  }
+  & .ui.compact.menu {
+    border-radius: 1.5em;
+    & .item{
+      color:rgb(45,139,222);
+      font-weight: bold;      
+    }
+  }
+  & h1 {
+    color: black;
+    font-weight: bold;
+  }
+  &__list {
+    margin: auto;
+    width: 80%;
+    text-align: center;
+    &__cards{
+      padding: 3em;
+    }
+    &__card{
+      a{
+        background-color: rgb(45,139,222);
+      }
+      
+      &__header {
+        font-size: 1.5em;
+        font-weight: bold;
+        color: #000;
+        min-height: 5rem;
+        border-bottom-left-radius: 0.4rem;
+        border-bottom-right-radius: 0.4rem;
+      }
+    }
+    & label {
+      padding: 0.3em;
+      display: flex;
+      font-size: 1.5em;
+      justify-content: center;
+      width: 10em;
+      margin: auto;
+      border-radius: 1em;
+      border: 1px solid rgb(233, 221, 221);
+    }
+  }
+}
+//? Détail élève
+div.studentDetail {
+  a {
+    color: #000;
+    text-decoration: none;
+    font-size: 1.5rem;
+    padding: 2rem;
+    margin-left: 2rem;
+    display: block;
+  }
+  div.header {
+    background-color: rgba(255, 161, 74, 0.8);
+    border-bottom: 0.1rem dotted rgb(45,139,222);
+    border-radius: 0;
+    border-bottom-left-radius: 0.4rem;
+    margin-top: 0 !important;
+  }
+  .studentsList__list__card {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    margin-bottom: 5rem;
+    background-color: #2d8bde;
+
+    .content {
+      padding: 0;
+      .header {
+        padding: 1.5rem;
+      }
+
+      .description{
+        display: flex;
+        align-items: baseline;
+        font-size: 1.2rem;
+        margin-left: 2rem;
+      }
+
+      .description,
+      .description div {
+        color: black;
+        font-size: 1.2rem;
+
+        p {
+          margin: 0 0 .1em;
+          padding-left: 0.5rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1150px) {
+  .studentsList {    
+    &__header {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+}
+
+div.meta > span, div.meta div{
+  padding: 0.1em;
+  color: white;
+  font-size: 1.1em;
+}
+
+#root > div > div > section > div > a {
+  background-color: rgba(45,139,222, .7);
+}
+
+#root > div > div > section > div > a > a > div > div.header.studentsList__list__card__header {
+  color: white;
+  background-color:rgba(45,139,222, .7);
+  border-radius: 1.5em;
+  margin-bottom: 0.2em;
+  // border: 0.1em solid white;
+}

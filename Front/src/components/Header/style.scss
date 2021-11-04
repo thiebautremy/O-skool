@@ -1,0 +1,17 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 0.5em;
+  background: rgba(255,161,74, 0.8);
+  border-bottom-left-radius: 2em;
+  border-bottom-right-radius: 2em;
+  &__image {
+    width: 20%;
+  }
+  &__title {
+    color: rgb(58,102,177);
+  font-size: 1.3em;
+  font-weight: bold;
+  }
+}

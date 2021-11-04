@@ -1,0 +1,21 @@
+.NavBar {
+    &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 0.5em;
+    background: rgb(255,161,74);
+    border-bottom-left-radius: 2em;
+    &__image {
+      width: 20%;
+    }
+  }
+}
+.ui.secondary.menu .item {
+  color: rgb(58,102,177);
+  font-size: 1.4rem;
+  font-weight: bold;
+  &:hover{
+    color: white;
+  }
+}
