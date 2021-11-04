@@ -1,0 +1,57 @@
+<?php //App_Entity_Student
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Symfony\\Component\\Serializer\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\ClassMetadata')),
+        clone ($p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata')),
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'App\\Entity\\Student',
+                'id',
+                'first_name',
+                'last_name',
+                'adress',
+                'city',
+                'zipCode',
+                'phone',
+                'email',
+                'health',
+                'hobbies',
+                'class',
+                'random',
+            ],
+            'attributesMetadata' => [
+                [
+                    'id' => $o[1],
+                    'first_name' => $o[2],
+                    'last_name' => $o[3],
+                    'adress' => $o[4],
+                    'city' => $o[5],
+                    'zipCode' => $o[6],
+                    'phone' => $o[7],
+                    'email' => $o[8],
+                    'health' => $o[9],
+                    'hobbies' => $o[10],
+                    'class' => $o[11],
+                    'random' => $o[12],
+                ],
+            ],
+        ],
+    ],
+    $o[0],
+    []
+); }];

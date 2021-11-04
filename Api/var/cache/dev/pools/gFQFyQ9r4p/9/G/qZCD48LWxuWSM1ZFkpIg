@@ -1,0 +1,59 @@
+<?php //App_Entity_Teachers
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Symfony\\Component\\Serializer\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\ClassMetadata')),
+        clone ($p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata')),
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'App\\Entity\\Teachers',
+                'id',
+                'firstName',
+                'lastName',
+                'teacher_picture',
+                'teacher_number',
+                'teacherPicture',
+                'teacherNumber',
+            ],
+            'attributesMetadata' => [
+                [
+                    'id' => $o[1],
+                    'firstName' => $o[2],
+                    'lastName' => $o[3],
+                    'teacher_picture' => $o[4],
+                    'teacher_number' => $o[5],
+                    'teacherPicture' => $o[6],
+                    'teacherNumber' => $o[7],
+                ],
+            ],
+            'groups' => [
+                1 => [
+                    'read:collection',
+                ],
+                [
+                    'read:collection',
+                ],
+                [
+                    'read:collection',
+                ],
+                [
+                    'read:collection',
+                ],
+                [
+                    'read:collection',
+                ],
+            ],
+        ],
+    ],
+    $o[0],
+    []
+); }];
