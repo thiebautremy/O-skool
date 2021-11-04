@@ -1134,6 +1134,6 @@ class __TwigTemplate_327071d945f83c92ee922eef4ed49f8168da20e90283d7ba8e79f218a08
 
 </body>
 </html>
-", "@ApiPlatform/GraphQlPlayground/index.html.twig", "C:\\Users\\remy.thiebaut\\Downloads\\Titre Pro\\o-Skool-back\\vendor\\api-platform\\core\\src\\Bridge\\Symfony\\Bundle\\Resources\\views\\GraphQlPlayground\\index.html.twig");
+", "@ApiPlatform/GraphQlPlayground/index.html.twig", "C:\\Users\\remy.thiebaut\\Downloads\\Titre Pro\\O'skool\\Api\\vendor\\api-platform\\core\\src\\Bridge\\Symfony\\Bundle\\Resources\\views\\GraphQlPlayground\\index.html.twig");
     }
 }

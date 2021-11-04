@@ -25,11 +25,10 @@ const FormChildren = ({
     const [hobbies, setHobbies] = useState('');
     const [classAbr, setClassAbr] = useState('');
     const [random, setRandom] = useState('');
-    const [birthday, setBirthday] = useState('');
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
-        handleOnSubmit(firstName, lastName, adress, zipCode, city, email, phone, health, hobbies, classAbr, random, birthday);
+        handleOnSubmit(firstName, lastName, adress, zipCode, city, email, phone, health, hobbies, classAbr, random);
     };
     const handleOnDeconnexion = () => {
          handleDeconnexion();
@@ -181,16 +180,6 @@ const FormChildren = ({
                                 name={random}
                                 onChange={e => setRandom(e.target.value)}
                             />
-                            <Input
-                                icon='birthday cake'
-                                iconPosition='left'
-                                type='date'
-                                value={birthday}
-                                placeholder="Date de naissance"
-                                className="formChildren__formChildren__form__input"
-                                name={birthday}
-                                onChange={e => setBirthday(e.target.value)}
-                            />
                         </fieldset>
                         <button
                             type="submit"
@@ -220,8 +209,8 @@ const mapStateToProps = (state) => ({
   });
   
   const mapDispatchToProps = (dispatch) => ({
-    handleOnSubmit: (firstName, lastName, adress,zipCode, city, email, phone, health, hobbies, classAbr, random, birthday) => {
-      dispatch(addChildren(firstName, lastName, adress,zipCode, city, email, phone, health, hobbies, classAbr, random, birthday));
+    handleOnSubmit: (firstName, lastName, adress,zipCode, city, email, phone, health, hobbies, classAbr, random) => {
+      dispatch(addChildren(firstName, lastName, adress,zipCode, city, email, phone, health, hobbies, classAbr, random));
     },
     handleDeconnexion: () => {
       dispatch(logOut());

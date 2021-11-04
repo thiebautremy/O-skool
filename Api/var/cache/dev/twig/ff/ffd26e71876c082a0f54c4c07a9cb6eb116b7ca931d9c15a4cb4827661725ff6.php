@@ -133,6 +133,6 @@ class __TwigTemplate_94b369aeee29dfd00f1fa1b23f220dff30e7bc42d87de9d3c9a8fdb21bc
 
 </body>
 </html>
-", "@ApiPlatform/Graphiql/index.html.twig", "C:\\Users\\remy.thiebaut\\Downloads\\Titre Pro\\o-Skool-back\\vendor\\api-platform\\core\\src\\Bridge\\Symfony\\Bundle\\Resources\\views\\Graphiql\\index.html.twig");
+", "@ApiPlatform/Graphiql/index.html.twig", "C:\\Users\\remy.thiebaut\\Downloads\\Titre Pro\\O'skool\\Api\\vendor\\api-platform\\core\\src\\Bridge\\Symfony\\Bundle\\Resources\\views\\Graphiql\\index.html.twig");
     }
 }

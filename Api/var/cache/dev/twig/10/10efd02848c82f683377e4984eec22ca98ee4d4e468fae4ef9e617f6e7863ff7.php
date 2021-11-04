@@ -165,6 +165,6 @@ class __TwigTemplate_3953333d0cc1730e538814cb8459104c46584472352e6c28176f2ac6335
         {%- endfor -%}
     </pre>
 {% endif %}
-", "@Doctrine/Collector/explain.html.twig", "C:\\Users\\remy.thiebaut\\Downloads\\Titre Pro\\o-Skool-back\\vendor\\doctrine\\doctrine-bundle\\Resources\\views\\Collector\\explain.html.twig");
+", "@Doctrine/Collector/explain.html.twig", "C:\\Users\\remy.thiebaut\\Downloads\\Titre Pro\\O'skool\\Api\\vendor\\doctrine\\doctrine-bundle\\Resources\\views\\Collector\\explain.html.twig");
     }
 }

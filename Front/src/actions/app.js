@@ -39,7 +39,7 @@ export const fetchInfosStudentProfil = (children) => ({
 });
 
 // formChildren
-export const addChildren = (firstName, lastName, adress,zipCode, city, email, phone, health, hobbies, classAbr, random, birthday) => ({
+export const addChildren = (firstName, lastName, adress,zipCode, city, email, phone, health, hobbies, classAbr, random) => ({
     type: ADD_CHILDREN,
     firstName, 
     lastName, 
@@ -51,8 +51,7 @@ export const addChildren = (firstName, lastName, adress,zipCode, city, email, ph
     health, 
     hobbies, 
     classAbr, 
-    random, 
-    birthday
+    random
 });
 
 export const isSuccess = () => ({

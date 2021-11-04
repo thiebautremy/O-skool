@@ -161,6 +161,6 @@ class __TwigTemplate_53f21a021e0a6c391c890ee9da642f7f194e8766a4060d5f3e6679ecbdd
         {% block body %}{% endblock %}
     </body>
 </html>
-", "base.html.twig", "C:\\Users\\remy.thiebaut\\Downloads\\Titre Pro\\o-Skool-back\\templates\\base.html.twig");
+", "base.html.twig", "C:\\Users\\remy.thiebaut\\Downloads\\Titre Pro\\O'skool\\Api\\templates\\base.html.twig");
     }
 }

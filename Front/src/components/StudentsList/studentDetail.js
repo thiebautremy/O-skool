@@ -34,15 +34,11 @@ return (
           inline
         />
           <Card.Content>
-            {props.student.firstName &&
+            {props.student.first_name &&
               <Card.Header className="studentsList__list__card__header">
-                  {props.student.firstName.toUpperCase()} {props.student.lastName.toUpperCase()}
+                  {props.student.first_name.toUpperCase()} {props.student.last_name.toUpperCase()}
               </Card.Header>}
                   <Card.Meta>
-                    <Card.Description>
-                      <Icon name='birthday cake'/>
-                        <p>{props.student.birthday && birthdayFormated}</p>
-                    </Card.Description>
                     <Card.Description>
                       <Icon name='home'/>
                       <div className='description__adress'>

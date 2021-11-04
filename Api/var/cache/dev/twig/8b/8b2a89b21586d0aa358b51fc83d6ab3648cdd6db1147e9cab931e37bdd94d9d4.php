@@ -385,6 +385,6 @@ class __TwigTemplate_7adc90806baf2235b9eeda28bc52111679871b2afd73cd7f4745d33cb23
 
 </body>
 </html>
-", "@ApiPlatform/SwaggerUi/index.html.twig", "C:\\Users\\remy.thiebaut\\Downloads\\Titre Pro\\o-Skool-back\\vendor\\api-platform\\core\\src\\Bridge\\Symfony\\Bundle\\Resources\\views\\SwaggerUi\\index.html.twig");
+", "@ApiPlatform/SwaggerUi/index.html.twig", "C:\\Users\\remy.thiebaut\\Downloads\\Titre Pro\\O'skool\\Api\\vendor\\api-platform\\core\\src\\Bridge\\Symfony\\Bundle\\Resources\\views\\SwaggerUi\\index.html.twig");
     }
 }

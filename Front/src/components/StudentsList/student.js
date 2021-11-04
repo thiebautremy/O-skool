@@ -31,7 +31,7 @@ const Student = (
             />
             <Card.Content>
               <Card.Header className="studentsList__list__card__header">
-                {props.student.firstName.toUpperCase()} {props.student.lastName.toUpperCase()}
+                {props.student.first_name.toUpperCase()} {props.student.last_name.toUpperCase()}
               </Card.Header>
               <Card.Meta>
               </Card.Meta>
