@@ -10,12 +10,12 @@ import {
 
 const teacher = (store) => (next) => (action) => {
     // const state =store.getState();
-    const ROOT_URL = 'http://127.0.0.1:8000/';
+    const ROOT_URL = 'https://localhost:8000/';
     switch (action.type) {
         case FETCH_INFOS_STUDENTS_TROMBI: {
             axios.get(`${ROOT_URL}api/studentsList`,{
               headers: {
-                'access-control-allow-origin': "*",
+                'Access-Control-Allow-Origin': "*",
                 "Accept": "application/json"
                 
               }
