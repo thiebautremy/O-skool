@@ -5,10 +5,10 @@ import ordi_parent from '../../assets/ordi_parent.webp';
 import './style.scss';
 
 const Home = ({handleGetTeacherTrombi}) => {
-  console.log(handleGetTeacherTrombi)
+  // console.log(handleGetTeacherTrombi)
 
   useEffect(() => {
-    handleGetTeacherTrombi()
+    // handleGetTeacherTrombi()
   })
   
 return (
