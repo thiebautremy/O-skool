@@ -54,8 +54,9 @@ export const addChildren = (firstName, lastName, adress,zipCode, city, email, ph
     random
 });
 
-export const isSuccess = () => ({
+export const isSuccess = (value) => ({
   type: IS_SUCCESS,
+  value
 })
 
 // modification profils

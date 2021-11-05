@@ -46,40 +46,40 @@ class StudentsController extends AbstractController
     }
 
     /**
-     * @Route("/api/student/add", name="api_student_add", methods={"POST"})
+     * @Route("/api/student/add", name="api_student_add", methods={"POST"}, options={"expose"=true})
      */
-    public function newStudent(Request $request)
+    public function newStudent(Request $request): Response
     {
-        dump(json_decode($request->getContent()));
         $data = json_decode($request->getContent(), true);
         dump($data);
+        dump($data['data']);
         $newStudent = new Student();
+        $newStudent
+            ->setfirst_name($data['data']['first_name'])
+            ->setlast_name($data['data']['last_name'])
+            ->setAdress($data['data']['adress'])
+            ->setCity($data['data']['city'])
+            ->setZipCode($data['data']['zip_code'])
+            ->setPhone($data['data']['phone'])
+            ->setEmail($data['data']['email'])
+            ->setHealth($data['data']['health'])
+            ->setHobbies($data['data']['hobbies'])
+            ->setClass($data['data']['class'])
+            ->setRandom($data['data']['random']);
         dump($newStudent);
-        // $newStudent
-        //     ->setFirstName($request->get('first_name'))
-        //     ->setLastName($request->get('last_name'))
-        //     ->setAdress($request->get('adress'))
-        //     ->setCity($request->get('city'))
-        //     ->setZipCode($request->get('zip_code'))
-        //     ->setPhone($request->get('phone'))
-        //     ->setEmail($request->get('email'))
-        //     ->setHealth($request->get('health'))
-        //     ->setHobbies($request->get('hobbies'))
-        //     ->setClass($request->get('class'))
-        //     ->setRandom($request->get('random'))
-        //     ->setBirthday($request->get('birthday'));
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($newStudent);
+        $entityManager->flush();
 
-        // $entityManager = $this->getDoctrine()->getManager();
-        // $entityManager->persist($newStudent);
-        // $entityManager->flush();
-
-        // return new JsonResponse(
-        //     [
-        //         'status' => 201,
-        //     ],
-        //     JsonResponse::HTTP_CREATED
-        // );
-        return new JsonResponse(['hearts' => rand(5, 100)]);
+        // return new Response('Elève ajouté', Response::HTTP_OK);
+        return new JsonResponse(
+            [
+                'status' => JsonResponse::HTTP_CREATED,
+                'student' => $newStudent
+            ],
+            
+        );
+        // return new JsonResponse(['hearts' => rand(5, 100)]);
     }
     
 

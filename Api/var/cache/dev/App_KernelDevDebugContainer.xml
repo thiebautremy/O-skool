@@ -81,11 +81,7 @@
     <parameter key="fragment.path">/_fragment</parameter>
     <parameter key="kernel.secret">%env(APP_SECRET)%</parameter>
     <parameter key="kernel.http_method_override">false</parameter>
-    <parameter key="kernel.trusted_hosts" type="collection">
-      <parameter>localhost</parameter>
-      <parameter>api</parameter>
-      <parameter>myproject.dev</parameter>
-    </parameter>
+    <parameter key="kernel.trusted_hosts" type="collection"/>
     <parameter key="kernel.default_locale">en</parameter>
     <parameter key="kernel.error_controller">error_controller</parameter>
     <parameter key="debug.file_link_format">null</parameter>
@@ -201,10 +197,6 @@
     <parameter key="nelmio_cors.map" type="collection">
       <parameter key="^/" type="collection">
         <parameter key="origin_regex">true</parameter>
-        <parameter key="allow_origin" type="collection">
-          <parameter>%env(CORS_ALLOW_ORIGIN)%</parameter>
-        </parameter>
-        <parameter key="allow_headers">true</parameter>
         <parameter key="allow_methods" type="collection">
           <parameter>POST</parameter>
           <parameter>PUT</parameter>

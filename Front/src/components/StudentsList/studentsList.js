@@ -5,18 +5,24 @@ import PropTypes from 'prop-types';
 import Student from './student';
 import './style.scss';
 import { connect } from 'react-redux';
-import { fetchInfosStudentsTrombi } from '../../actions/app'
+import { fetchInfosStudentsTrombi, isSuccess } from '../../actions/app'
 
 const StudentsList = ({
   handleDeconnexion,
   fetchStudentsTrombi,
+  handleIsSuccess,
   students,
   isLogged
 }) => {
   const handleOnDeconnexion = () => {
     handleDeconnexion();
   }
-  useEffect(fetchStudentsTrombi, [])
+  useEffect(() => {
+    fetchStudentsTrombi()
+    setTimeout(() => {
+      handleIsSuccess(false)
+    }, 3000)
+  }, [])
 
 return(
   
@@ -80,6 +86,9 @@ const mapStateToProps = (state) => {
       fetchStudentsTrombi: () => {
           // je vais chercher et non enregistrer dans le store. 
           dispatch(fetchInfosStudentsTrombi())
+      },
+      handleIsSuccess: (value) => {
+        dispatch(isSuccess(value))
       }
   })
   

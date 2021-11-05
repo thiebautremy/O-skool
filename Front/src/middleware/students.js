@@ -10,14 +10,13 @@ import {
 
 const teacher = (store) => (next) => (action) => {
     // const state =store.getState();
-    const ROOT_URL = 'https://localhost:8000/';
+    const ROOT_URL = 'https://127.0.0.1:8000/';
     switch (action.type) {
         case FETCH_INFOS_STUDENTS_TROMBI: {
-            axios.get(`${ROOT_URL}api/studentsList`,{
+            axios.get(`${ROOT_URL}api/studentsList`, {
               headers: {
-                'Access-Control-Allow-Origin': "*",
-                "Accept": "application/json"
-                
+                "Accept": "application/json",
+                'Access-Control-Allow-Origin': "*"
               }
             })
             .then((response) => {
@@ -49,9 +48,15 @@ const teacher = (store) => (next) => (action) => {
           case ADD_CHILDREN: {
             console.log(`firstName: ${action.firstName}`)
             axios.post(`${ROOT_URL}api/student/add`, {
+              headers: {
+                'Access-Control-Allow-Origin': "*",
+                "Accept": "application/json"
+              },
+              data: {
                 first_name: action.firstName,
                 last_name: action.lastName,
                 zip_code: action.zipCode,
+                adress: action.adress,
                 city: action.city,
                 email: action.email,
                 phone: action.phone,
@@ -60,15 +65,12 @@ const teacher = (store) => (next) => (action) => {
                 class: action.classAbr,
                 random: action.random,
                 birthday: action.birthday
-              }, {
-              headers: {
-                'Accept': "*",
               }
             })
               .then(response => {
-                console.log(response)
-                if(response.status === 201){
-                  store.dispatch(isSuccess());
+                console.log(response.status)
+                if(response.status === 200){
+                  store.dispatch(isSuccess(true));
                 } 
               })
               .catch((error) => console.log(error))
