@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
-import { Dropdown, Input, Menu, Icon } from 'semantic-ui-react';
+import { Input, Menu, Icon } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { addChildren } from '../../actions/app';
 import { logOut } from '../../actions/auth';

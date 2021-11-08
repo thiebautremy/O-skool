@@ -4,12 +4,8 @@
 export const HANDLE_CHANGE = 'HANDLE_CHANGE'; //ok 
 export const SUBSCRIBE_SUBMIT = 'SUBSCRIBE_SUBMIT'; // ok
 export const SUBSCRIBE_SAVE = 'SUBSCRIBE_SAVE'; //ok 
-export const CHANGE_CHECKBOX = 'CHANGE_CHECKBOX'; //ok 
-export const SUCESS = 'SUCESS'; 
-
-// SUBSCRIBE TEACHER
-export const SUBSCRIBE_SAVE_TEACHER = 'SUBSCRIBE_SAVE_TEACHER';
-export const SUBSCRIBE_SUBMIT_TEACHER = 'SUBSCRIBE_SUBMIT_TEACHER';
+export const SUCESS = 'SUCESS';
+export const CHANGE_USERNAME = 'CHANGE_USERNAME'
 
 //logout 
 export const LOGOUT = 'LOGOUT';
@@ -30,7 +26,11 @@ export const handleChange = (value, name) => ({
     value,
     name,
   });
-  
+// Changer username
+export const changeUsername = (value) => ({
+  type: 'CHANGE_USERNAME',
+  value
+})
 // LOGIN 
 export const handleSubmit = (email, password) => ({
     type: HANDLE_SUBMIT,
@@ -52,25 +52,9 @@ export const subscribeSubmit = () => ({ //yes
   type: SUBSCRIBE_SUBMIT,
   })
 
-export const changeCheckBox = (isChecked, target) => ({ //yes
-  type: CHANGE_CHECKBOX,
-  isChecked,
-  target
-});
-
 export const successSubscribe = () => ({ //no
 type: SUCESS,
 })
-
-// SUBSCRIBE TEACHER 
-// middleware
-export const subscribeSaveTeacher = (firstname, lastname, mobile_phone) => ({
-  type: SUBSCRIBE_SAVE_TEACHER,
-  firstname,
-  lastname,
-  mobile_phone,
-});
-
 // container
 // export const subscribeSubmit = () => ({ //yes
 //   type: SUBSCRIBE_SUBMIT,

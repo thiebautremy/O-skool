@@ -6,12 +6,14 @@ import Student from './student';
 import './style.scss';
 import { connect } from 'react-redux';
 import { fetchInfosStudentsTrombi, isSuccess } from '../../actions/app'
+import ModalMessage from '../Modal/modal'
 
 const StudentsList = ({
   handleDeconnexion,
   fetchStudentsTrombi,
   handleIsSuccess,
   students,
+  isSuccess,
   isLogged
 }) => {
   const handleOnDeconnexion = () => {
@@ -21,7 +23,7 @@ const StudentsList = ({
     fetchStudentsTrombi()
     setTimeout(() => {
       handleIsSuccess(false)
-    }, 3000)
+    }, 5000)
   }, [])
 
 return(
@@ -49,16 +51,25 @@ return(
       
       </header>
       <section className="studentsList__list">
+        {isSuccess && 
+          <ModalMessage 
+            title={''}
+            message={'Elève ajouté à la liste'}
+            confirmBtn= {false}
+            handleYes={''}
+            />
+        }
         {students && 
-        <Card.Group stackable centered
-        className="studentsList__list__cards">
-          {students.map((stud) =>(
-                  <Student
-                    student={stud}
-                    key={stud.id}
-                  />
-          ))}
-        </Card.Group>}
+          <Card.Group stackable centered
+          className="studentsList__list__cards">
+            {students.map((stud) =>(
+                    <Student
+                      student={stud}
+                      key={stud.id}
+                    />
+            ))}
+          </Card.Group>
+        }
       </section>
       {/* {!isLogged && <Redirect to="/" />} */}
     </div>
@@ -75,7 +86,8 @@ StudentsList.propTypes = {
 const mapStateToProps = (state) => {
   return ({
           isLogged: state.auth.isLogged,
-          students: state.students.students, 
+          students: state.students.students,
+          isSuccess: state.students.isSuccess
   
       })
   }

@@ -5,12 +5,12 @@ import { composeWithDevTools  } from 'redux-devtools-extension';
 import rootReducer from '../reducers';
 
 import auth from '../middleware/auth';
-import teacher from '../middleware/teacher';
-import subscribe from '../middleware/subscribe';
+import users from '../middleware/users';
 import students from '../middleware/students';
+import subscribe from '../middleware/subscribe';
 
 const store = createStore(rootReducer, composeWithDevTools (
-  applyMiddleware(auth, students, subscribe)
+  applyMiddleware(auth, students, subscribe, users)
 ))
 
 // == Export

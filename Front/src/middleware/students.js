@@ -29,11 +29,15 @@ const teacher = (store) => (next) => (action) => {
             break;
           }
           case FETCH_INFOS_STUDENTS_DETAIL: {  
+            console.log(action.id)
             axios.get(`${ROOT_URL}api/studentsList/${action.id}`,{
               headers: {
                 // 'Authorization': `Bearer ${localStorage.getItem('token')}`,
                 "Accept": "application/json",
                 'Access-Control-Allow-Origin': "*"
+              },
+              data: {
+                student_id: action.id
               }
             })
             .then((response) => {

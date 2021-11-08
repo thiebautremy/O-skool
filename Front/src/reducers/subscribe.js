@@ -1,27 +1,20 @@
 import {
-  SUBSCRIBE_SAVE, 
-  CHANGE_CHECKBOX,
+  SUBSCRIBE_SAVE,
   HANDLE_CHANGE,
-  SUBSCRIBE_SAVE_TEACHER,
+  CHANGE_USERNAME
 } from '../actions/auth';
 
 export const initialState = {
-  // subscribe 
-     email: "",
-     password: "",
-     role: "Parent", // (role === true ? parent : teacher)
-     success: false, 
-  //  subscribe teacherForm
-     firstname: "",
-     lastname: "",
-     mobile_phone: "", 
+    user_name: '',
+    email: "",
+    password: "",
   }
 const subscribe = (state = initialState, action = {} ) => {
   switch(action.type) {
-    case CHANGE_CHECKBOX: 
+    case CHANGE_USERNAME:
       return {
         ...state,
-        [action.target]: action.isChecked 
+        user_name: action.value
       }
     case HANDLE_CHANGE: 
       return {
@@ -36,13 +29,6 @@ const subscribe = (state = initialState, action = {} ) => {
             role: action.role,
             success: true
         }
-    case SUBSCRIBE_SAVE_TEACHER: 
-      return {
-        ...state, 
-        firstname: action.firstname,
-        lastname: action.lastname,
-        mobile_phone: action.mobile_phone,
-      }
     default: 
       return state;
   }

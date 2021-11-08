@@ -1,7 +1,6 @@
 import React from 'react';
-import { Card, Image, Icon } from 'semantic-ui-react';
+import { Card, Image} from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import moment from 'moment';
 import './style.scss';
 import elvis from '../../assets/elvis.png';
 import { Link } from 'react-router-dom';

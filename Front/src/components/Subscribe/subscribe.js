@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { handleChange, subscribeSubmit, changeUsername} from '../../actions/auth';
 // import Input from '../Input/input';
 
 import './style.scss';
@@ -8,11 +10,12 @@ import './style.scss';
 const Subscribe = ({
   email,
   password,
+  userName,
   role,
   success, 
-  handleChange, 
-  submitRegister,
-  handleChangeCheckBox
+  handleChange,
+  handleChangeUsername,
+  submitRegister
 }) => {
   const handleOnChange = (event) => {
     const value = event.target.value;
@@ -29,8 +32,18 @@ const Subscribe = ({
             <h2 className="subscribe__subscribe__title">S'inscrire</h2>
             <form 
               className="subscribe__subscribe__form"
-              onSubmit={handleOnSubmit}
+              onSubmit={(evt) => handleOnSubmit(evt)}
               >
+              <label>Nom d'utilisateur</label>
+                <input 
+                  type='userName'
+                  value={userName}
+                  placeholder="Entrer votre nom d'utilisateur"
+                  className="subscribe__subscribe__form__input"
+                  name={userName}
+                  onChange={(e) => handleChangeUsername(e.target.value)} 
+                />
+              <label>Email</label>
                 <input 
                   type='email'
                   value={email}
@@ -39,7 +52,8 @@ const Subscribe = ({
                   name={email}
                   onChange={handleOnChange} 
                 />
-                 <input 
+              <label>Mot de passe</label>
+                <input 
                   type='password'
                   value={password}
                   placeholder="Mot de passe"
@@ -47,27 +61,6 @@ const Subscribe = ({
                   name={password}
                   onChange={handleOnChange} 
                 />
-              <div className="subscribe__subscribe__form__radio">
-                <div className="subscribe__subscribe__form__radio__input">
-                  <input 
-                    type="radio" 
-                    value="Parent"
-                    name="role"
-                    // target = name ; value = value 
-                    onChange={(evt) => handleChangeCheckBox(evt.target.value, evt.target.name)}
-                  />
-                    Parent 
-                </div> 
-                <div className="subscribe__subscribe__form__radio__input">
-                  <input 
-                    type="radio" 
-                    value="Teacher"
-                    name="role"
-                    onChange={(evt) => handleChangeCheckBox(evt.target.value, evt.target.name)}
-                    />
-                    Enseignant
-                </div>
-              </div>
               <button
                 type="submit"
                 className="subscribe__subscribe__form__btn"
@@ -75,7 +68,6 @@ const Subscribe = ({
                 S'inscrire
               </button>
               {(success && role === "Parent" && <Redirect to="/parentForm" />)}
-              {(success && role === "Teacher" && <Redirect to="/teacherForm" />)}
             </form> 
           </div>
         </main>
@@ -84,10 +76,26 @@ const Subscribe = ({
 Subscribe.propTypes = {
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
-  role: PropTypes.bool.isRequired, 
-  handleChangeCheckBox: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
   submitRegister: PropTypes.func.isRequired,
 };
 
-export default Subscribe;
+const mapStateToProps = (state) => ({
+  userName: state.subscribe.user_name,
+  email: state.subscribe.email,
+  password: state.subscribe.password
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  handleChange: (value, name) => {
+    dispatch(handleChange(value, name))
+  },
+  submitRegister: () => {
+    dispatch(subscribeSubmit());
+  },
+  handleChangeUsername: (value) => {
+    dispatch(changeUsername(value))
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Subscribe);

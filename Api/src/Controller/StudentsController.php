@@ -42,7 +42,7 @@ class StudentsController extends AbstractController
      */
     public function getStudent(StudentRepository $sr, Request $request, int $id)
     {
-        return $this->json($sr->find($id));
+        return $this->json($sr->findById($id)[0]);
     }
 
     /**

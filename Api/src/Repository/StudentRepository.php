@@ -33,6 +33,20 @@ class StudentRepository extends ServiceEntityRepository
         return $query->getArrayResult();
     }
 
+    public function findById($id)
+    {
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery('
+            SELECT s.id, s.first_name, s.last_name, s.adress, s.city, s.zipCode, s.phone, s.email, s.health, s.hobbies, s.class, s.random
+            FROM App\Entity\Student s
+            WHERE s.id = :student_id
+        ')
+        -> setParameter('student_id', $id);
+        
+        return $query->getResult();
+    }
+
 
     // /**
     //  * @return Student[] Returns an array of Student objects

@@ -349,6 +349,13 @@
         <argument type="service" id=".service_locator.W9y3dzm.App\Controller\StudentsController"/>
       </call>
     </service>
+    <service id="App\Controller\SubscribeController" class="App\Controller\SubscribeController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.W9y3dzm.App\Controller\SubscribeController"/>
+      </call>
+    </service>
     <service id="App\Controller\TeachersController" class="App\Controller\TeachersController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -371,6 +378,10 @@
       <argument type="service" id="doctrine"/>
     </service>
     <service id="App\Repository\TeachersRepository" class="App\Repository\TeachersRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
@@ -3395,7 +3406,7 @@
       <factory class="Doctrine\ORM\EntityManager" method="create"/>
     </service>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory">
-      <argument type="service" id=".service_locator.2ZveKj7"/>
+      <argument type="service" id=".service_locator.Ar8vaoD"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -4875,6 +4886,9 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\StudentsController" class="App\Controller\StudentsController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\StudentsController" class="App\Controller\StudentsController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\StudentsController" class="App\Controller\StudentsController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\SubscribeController" class="App\Controller\SubscribeController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\SubscribeController" class="App\Controller\SubscribeController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\SubscribeController" class="App\Controller\SubscribeController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\TeachersController" class="App\Controller\TeachersController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\TeachersController" class="App\Controller\TeachersController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\TeachersController" class="App\Controller\TeachersController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -4888,6 +4902,8 @@
     <service id=".abstract.instanceof.App\Repository\StudentRepository" class="App\Repository\StudentRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\TeachersRepository" class="App\Repository\TeachersRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\TeachersRepository" class="App\Repository\TeachersRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".service_locator.0GV1BZZ" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -5325,12 +5341,13 @@
       <argument type="service" id="cache.doctrine.orm.default.result"/>
       <factory class="Doctrine\Common\Cache\Psr6\DoctrineProvider" method="wrap"/>
     </service>
-    <service id=".service_locator.2ZveKj7" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.Ar8vaoD" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Repository\ClassesRepository" type="service_closure" id="App\Repository\ClassesRepository"/>
         <argument key="App\Repository\StudentRepository" type="service_closure" id="App\Repository\StudentRepository"/>
         <argument key="App\Repository\TeachersRepository" type="service_closure" id="App\Repository\TeachersRepository"/>
+        <argument key="App\Repository\UserRepository" type="service_closure" id="App\Repository\UserRepository"/>
       </argument>
     </service>
     <service id=".service_locator.KLVvNIq" class="Symfony\Component\DependencyInjection\ServiceLocator">
@@ -5364,6 +5381,12 @@
     <service id=".service_locator.W9y3dzm.App\Controller\StudentsController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\StudentsController"/>
       <argument>App\Controller\StudentsController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.W9y3dzm" method="withContext"/>
+    </service>
+    <service id=".service_locator.W9y3dzm.App\Controller\SubscribeController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\SubscribeController"/>
+      <argument>App\Controller\SubscribeController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.W9y3dzm" method="withContext"/>
     </service>

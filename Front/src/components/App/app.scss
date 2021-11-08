@@ -25,4 +25,14 @@ a{
   color: white;
   font-size: 1.2rem;
 }
+
+input {
+  border-radius: 5px;
+  border: none;
+  padding: 0.8em;
+  min-width: 20rem;
+    &::placeholder{
+        color: #000;
+    }
+}
 }

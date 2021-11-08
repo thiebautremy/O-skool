@@ -1,16 +1,16 @@
 .footer {
   position: relative;
-  padding: 1em;
+  padding: 1rem;
   display: flex;
   justify-content: space-evenly;
-  margin-top: 5rem;
+  margin-top: 8rem;
   font-weight: bold;
   background: rgb(255,161,74);
   border-top-left-radius: 2em;
   border-top-right-radius: 2em;
   & a{
     color: rgb(58,102,177);
-    font-size: 1.4em;
+    font-size: 1.4rem;
     &:hover{
       color: white;
     }

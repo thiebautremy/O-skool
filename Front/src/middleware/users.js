@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { ADD_CHILDREN, isSuccess } from '../actions/app';
 
-const parentProfil = (store) => (next) => (action) => {
+const users = (store) => (next) => (action) => {
   const ROOT_URL = 'http://127.0.0.1:8000/';
   switch (action.type) {
     case ADD_CHILDREN: {
@@ -33,4 +33,4 @@ const parentProfil = (store) => (next) => (action) => {
     default: next(action);
   }
 }
-export default parentProfil;
+export default users;

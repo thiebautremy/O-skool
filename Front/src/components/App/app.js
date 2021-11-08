@@ -1,14 +1,12 @@
 import React from 'react';
 import './app.scss';
-import Home from '../../containers/teacherProfil/teacherProfil';
+import Home from '../Home/home';
 import Login from '../../containers/Login/login';
-import Subscribe from '../../containers/subscribe/subscribe';
+import Subscribe from '../Subscribe/subscribe';
 import {Route} from 'react-router-dom';
 import Footer from '../Footer/footer';
 import Header from '../../containers/Headers/headers';
 import NavBar from '../NavBar/NavBar';
-import TeacherForm from '../../containers/TeacherForm/teacherForm';
-import TeacherProfil from '../../containers/teacherProfil/teacherProfil';
 import ParentForm from '../ParentForm/parentForm';
 import ParentProfil from '../../containers/parentProfil/parentProfil';
 import FormChildren from '../FormChildren/formChildren';
@@ -61,18 +59,6 @@ function App() {
         <Route path="/parentProfil" exact>
           <Header />
           <ParentProfil />
-        </Route>
-
-        {/* Route pour accèder au formulaire d'inscription teacher */}
-        <Route path="/teacherForm" exact>
-          <Header />
-          <TeacherForm />
-        </Route>
-
-        {/* Route pour accèder au profil du teacher  */}
-        <Route path="/teacherProfil" exact>
-          <Header />
-          <TeacherProfil />
         </Route>
 
         {/* Route pour accèder au formulaire d'ajout d'enfant  */}

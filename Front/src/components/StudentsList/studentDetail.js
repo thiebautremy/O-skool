@@ -2,7 +2,6 @@ import React, {useEffect} from 'react';
 import { Card, Image, Icon, Menu } from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
-import moment from 'moment';
 import './style.scss';
 import elvis from '../../assets/elvis.png';
 import { useParams } from 'react-router-dom';
@@ -12,11 +11,14 @@ import { fetchInfosStudentsDetail } from '../../actions/app'
 const StudentDetail = (
 props
 ) => {
-const birthdayFormated = moment(props.student.birthday).format('DD/MM/YYYY');
 const { id } = useParams();
 useEffect(() =>{
-    props.fetchStudentDetail(id)  
+  if(id !== 'undefined'){
+
+    props.fetchStudentDetail(id)
+  }
 }, [id])
+console.log(props)
 return (
   <div className="studentDetail">
     <Link to="/studentsList" onClick={props.fetchStudentDetail()}>
