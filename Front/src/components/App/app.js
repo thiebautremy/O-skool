@@ -1,7 +1,7 @@
 import React from 'react';
 import './app.scss';
 import Home from '../Home/home';
-import Login from '../../containers/Login/login';
+import Login from '../Login/login';
 import Subscribe from '../Subscribe/subscribe';
 import {Route} from 'react-router-dom';
 import Footer from '../Footer/footer';

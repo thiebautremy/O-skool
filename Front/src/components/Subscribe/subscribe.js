@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { handleChange, subscribeSubmit, changeUsername} from '../../actions/auth';
+import { handleChangeSubscribe, subscribeSubmit, changeUsername} from '../../actions/auth';
 // import Input from '../Input/input';
 
 import './style.scss';
@@ -15,7 +15,8 @@ const Subscribe = ({
   success, 
   handleChange,
   handleChangeUsername,
-  submitRegister
+  submitRegister,
+  isSuccessSubscribe
 }) => {
   const handleOnChange = (event) => {
     const value = event.target.value;
@@ -70,6 +71,7 @@ const Subscribe = ({
               {(success && role === "Parent" && <Redirect to="/parentForm" />)}
             </form> 
           </div>
+          {isSuccessSubscribe && <Redirect to="/login" />}
         </main>
   );
 }
@@ -83,12 +85,13 @@ Subscribe.propTypes = {
 const mapStateToProps = (state) => ({
   userName: state.subscribe.user_name,
   email: state.subscribe.email,
-  password: state.subscribe.password
+  password: state.subscribe.password,
+  isSuccessSubscribe: state.subscribe.isSuccessSubscribe
 });
 
 const mapDispatchToProps = (dispatch) => ({
   handleChange: (value, name) => {
-    dispatch(handleChange(value, name))
+    dispatch(handleChangeSubscribe(value, name))
   },
   submitRegister: () => {
     dispatch(subscribeSubmit());

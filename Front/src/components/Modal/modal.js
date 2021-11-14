@@ -8,7 +8,7 @@ function ModalMessage({title, message, confirmBtn, handleYes}) {
     <Modal
       closeIcon
       open={open}
-      trigger={<Button>Show Modal</Button>}
+      // trigger={<Button>Show Modal</Button>}
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
     >

@@ -1,10 +1,11 @@
 // ACTIONS TYPE 
 
 // SUBSCRIBE 
-export const HANDLE_CHANGE = 'HANDLE_CHANGE'; //ok 
+export const HANDLE_CHANGE_SUBSCRIBE = 'HANDLE_CHANGE_SUBSCRIBE'; //ok 
+export const HANDLE_CHANGE_AUTH = 'HANDLE_CHANGE_AUTH'
 export const SUBSCRIBE_SUBMIT = 'SUBSCRIBE_SUBMIT'; // ok
 export const SUBSCRIBE_SAVE = 'SUBSCRIBE_SAVE'; //ok 
-export const SUCESS = 'SUCESS';
+export const IS_SUCCESS = 'IS_SUCCESS';
 export const CHANGE_USERNAME = 'CHANGE_USERNAME'
 
 //logout 
@@ -13,16 +14,20 @@ export const LOGOUT = 'LOGOUT';
 //login
 export const SAVE_PARENT_INFOS = 'SAVE_PARENT_INFOS';
 export const SAVE_TEACHER_INFOS = 'SAVE_TEACHER_INFOS';
-export const CHECK_IS_LOGGED__PARENT = 'CHECK_IS_LOGGED__PARENT';
-export const CHECK_IS_LOGGED__TEACHER = 'CHECK_IS_LOGGED__TEACHER';
 
 
 export const HANDLE_SUBMIT = 'HANDLE_SUBMIT';
 // ACTIONS CREATOR
 
 // changer un inputValue
-export const handleChange = (value, name) => ({
-    type: HANDLE_CHANGE,
+export const handleChangeSubscribe = (value, name) => ({
+    type: HANDLE_CHANGE_SUBSCRIBE,
+    value,
+    name,
+  });
+
+  export const handleChangeAuth = (value, name) => ({
+    type: HANDLE_CHANGE_AUTH,
     value,
     name,
   });
@@ -32,10 +37,8 @@ export const changeUsername = (value) => ({
   value
 })
 // LOGIN 
-export const handleSubmit = (email, password) => ({
+export const handleSubmit = () => ({
     type: HANDLE_SUBMIT,
-    email,
-    password
 });
 
 // SUBSCRIBE
@@ -46,15 +49,14 @@ export const subscribeSave = (email, password, role) => ({
   password, 
   role,
 })
-
+export const isSuccess = (value) => ({
+  type: IS_SUCCESS,
+  value
+})
 //container 
 export const subscribeSubmit = () => ({ //yes
   type: SUBSCRIBE_SUBMIT,
   })
-
-export const successSubscribe = () => ({ //no
-type: SUCESS,
-})
 // container
 // export const subscribeSubmit = () => ({ //yes
 //   type: SUBSCRIBE_SUBMIT,
@@ -81,15 +83,4 @@ export const saveTeacherInfos = (findUser) => ({
     firstName: findUser.firstname,
     lastName: findUser.lastname,
     mobile_phone: findUser.mobile_phone,
-  });
-// ---- GESTION CONNEXION EN TANT QUE PARENT ---- \\
-export const checkIsLoggedParent = (id) => ({
-  type: CHECK_IS_LOGGED__PARENT,
-  id,
-});
-
-// ---- GESTION CONNEXION EN TANT QUE TEACHER ---- \\
-export const checkIsLoggedTeacher = (id) => ({
-    type: CHECK_IS_LOGGED__TEACHER,
-    id,
   });

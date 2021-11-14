@@ -6,6 +6,7 @@ use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\StudentRepository;
+use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,12 +23,12 @@ class SubscribeController extends AbstractController
      */
     public function newUser(Request $request): Response
     {
+        $data = json_decode($request->getContent(), true);
         $newUser = new User();
         $newUser
-            ->setUserName($request->get('user_name'))
-            ->setEmail($request->get('email'))
-            ->setPassword($request->get('password'));
-        dump($newUser);
+            ->setUserName($data['data']['user_name'])
+            ->setEmail($data['data']['email'])
+            ->setPassword(password_hash($data['data']['password'], PASSWORD_DEFAULT));
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($newUser);
         $entityManager->flush();
@@ -41,6 +42,44 @@ class SubscribeController extends AbstractController
         );
     }
     
+    /**
+     * @Route("/api/user/login_check", name="api_user_login_check", methods={"POST"}, options={"expose"=true})
+     */
+    public function loginCheck(UserRepository $ur, Request $request): Response
+    {
+        $data = json_decode($request->getContent(), true);
+        $user = $ur->findByEmail($data['data']['email']);
+        dump(password_verify($data['data']['password'], password_hash($data['data']['password'], PASSWORD_DEFAULT)));
+        dump($user[0]['password']);
+        return $this->json($ur->findByEmail($data['data']['email']));
+// if (password_verify($pass, password_hash($pass, PASSWORD_DEFAULT))
+// {
+//   echo "Mot de passe correct";
+// }
+// else
+// {
+//   echo "Mot de passe incorrect";
+// }
+
+
+
+        // $newUser = new User();
+        // $newUser
+        //     ->setUserName($data['data']['user_name'])
+        //     ->setEmail($data['data']['email'])
+        //     ->setPassword(password_hash($data['data']['password'], PASSWORD_DEFAULT));
+        // $entityManager = $this->getDoctrine()->getManager();
+        // $entityManager->persist($newUser);
+        // $entityManager->flush();
+
+        // return new JsonResponse(
+        //     [
+        //         'status' => JsonResponse::HTTP_CREATED,
+        //         'user' => $newUser
+        //     ],
+            
+        // );
+    }
 
 
 

@@ -19,6 +19,19 @@ class UserRepository extends ServiceEntityRepository
         parent::__construct($registry, User::class);
     }
 
+    public function findByEmail($email)
+    {
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery('
+            SELECT u.user_name, u.email, u.password
+            FROM App\Entity\User u
+            WHERE u.email = :user_email
+        ')
+        -> setParameter('user_email', $email);
+        
+        return $query->getScalarResult();
+    }
     // /**
     //  * @return User[] Returns an array of User objects
     //  */
@@ -36,15 +49,7 @@ class UserRepository extends ServiceEntityRepository
     }
     */
 
-    /*
-    public function findOneBySomeField($value): ?User
-    {
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
+    
+    
+    
 }

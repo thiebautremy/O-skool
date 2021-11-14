@@ -1,19 +1,23 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {Redirect} from 'react-router-dom';
+import { isSuccess, handleChangeAuth, handleSubmit } from '../../actions/auth'
+import { connect } from 'react-redux';
+import ModalMessage from '../Modal/modal'
 
 import './style.scss';
 
 const Login = ({
   email,
   password,
-  isTeacher,
-  isParent,
   handleChange,
   handleOnSubmit,
+  handleIsSuccess,
+  isSuccessSubscribe
 }) => {
   const handleOnClick = (event) => {
     event.preventDefault();
+    console.log('test')
     handleOnSubmit();
   };
   const handleOnChange = (event) => {
@@ -21,13 +25,27 @@ const Login = ({
     const name = event.target.type;
     handleChange(value, name);
   }
+
+  useEffect(() => {
+    setTimeout(() => {
+      handleIsSuccess(false)
+    }, 5000)
+  })
   return (
       <main className='login'>
         <div className="login__login">
           <h2 className="login__login__title">Se connecter</h2>
+          {isSuccessSubscribe && 
+            <ModalMessage 
+              title={''}
+              message={'Compte crée avec succès, vous pouvez maintenant vous connecter'}
+              confirmBtn= {false}
+              handleYes={''}
+              />
+          }
           <form 
             className="login__login__form"
-            onSubmit={handleOnClick}
+            onSubmit={(evt) => handleOnClick(evt)}
             >
             <input
               type='email'
@@ -51,8 +69,6 @@ const Login = ({
             </button>
           </form>
         </div>
-        {isTeacher && <Redirect to ="/teacherProfil"/>}
-        {isParent && <Redirect to ="/parentProfil"/>}
       </main>
   );
 };
@@ -62,10 +78,28 @@ Login.propTypes = {
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
-  handleOnSubmit: PropTypes.func.isRequired,
-  isParent: PropTypes.bool,
-  isTeacher: PropTypes.bool,
+  handleOnSubmit: PropTypes.func.isRequired
 };
 
 
-export default Login;
+const mapStateToProps = (state) => {
+  return ({
+          isLogged: state.auth.isLogged,
+          isSuccessSubscribe: state.subscribe.isSuccessSubscribe
+  
+      })
+  }
+  const mapDispatchToProps = (dispatch) => ({
+      handleIsSuccess: (value) => {
+        dispatch(isSuccess(value))
+      },
+      handleChange: (value, name) => {
+        dispatch(handleChangeAuth(value, name))
+      },
+      handleOnSubmit: () => {
+        console.log('putain !!!')
+        dispatch(handleSubmit())
+      }
+  })
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(Login);

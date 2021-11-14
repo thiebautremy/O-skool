@@ -1,43 +1,31 @@
 import { 
   HANDLE_SUBMIT, 
-  CHECK_IS_LOGGED__TEACHER,
-  HANDLE_CHANGE,
+  HANDLE_CHANGE_AUTH,
   LOGOUT,
 } from '../actions/auth';
 
 export const initialState = {
     email: '',
     password: '',
-    isTeacher: false,
-    isParent: false,
     isLogged: false,
     id: '',
   }
 const auth = (state = initialState, action = {} ) => {
   switch(action.type) {
-    case HANDLE_SUBMIT: {
-      const connexion = {
-        email: action.email,
-        password: action.password
-      }
-      return {
-        ...state,
-        connexion,
-      }
-    }
-    case HANDLE_CHANGE: {
+    // case HANDLE_SUBMIT: {
+    //   const connexion = {
+    //     email: action.email,
+    //     password: action.password
+    //   }
+    //   return {
+    //     ...state,
+    //     connexion,
+    //   }
+    // }
+    case HANDLE_CHANGE_AUTH: {
       return {
         ...state,
         [action.name]: action.value,
-      }
-    }
-    case CHECK_IS_LOGGED__TEACHER: {
-      return {
-        ...state,
-        isTeacher: true,
-        isParent: false,
-        isLogged: true,
-        id: action.id,
       }
     }
     case LOGOUT: {

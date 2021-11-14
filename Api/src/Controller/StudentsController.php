@@ -51,8 +51,6 @@ class StudentsController extends AbstractController
     public function newStudent(Request $request): Response
     {
         $data = json_decode($request->getContent(), true);
-        dump($data);
-        dump($data['data']);
         $newStudent = new Student();
         $newStudent
             ->setfirst_name($data['data']['first_name'])
@@ -66,7 +64,6 @@ class StudentsController extends AbstractController
             ->setHobbies($data['data']['hobbies'])
             ->setClass($data['data']['class'])
             ->setRandom($data['data']['random']);
-        dump($newStudent);
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($newStudent);
         $entityManager->flush();

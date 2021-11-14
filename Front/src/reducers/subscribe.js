@@ -1,22 +1,29 @@
 import {
   SUBSCRIBE_SAVE,
-  HANDLE_CHANGE,
-  CHANGE_USERNAME
+  HANDLE_CHANGE_SUBSCRIBE,
+  CHANGE_USERNAME,
+  IS_SUCCESS
 } from '../actions/auth';
 
 export const initialState = {
     user_name: '',
     email: "",
     password: "",
+    isSuccessSubscribe: false
   }
 const subscribe = (state = initialState, action = {} ) => {
   switch(action.type) {
+    case IS_SUCCESS:
+        return {
+          ...state,
+          isSuccessSubscribe: action.value
+        }
     case CHANGE_USERNAME:
       return {
         ...state,
         user_name: action.value
       }
-    case HANDLE_CHANGE: 
+    case HANDLE_CHANGE_SUBSCRIBE: 
       return {
         ...state, 
         [action.name]: action.value

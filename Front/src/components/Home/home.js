@@ -1,15 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {Icon} from 'semantic-ui-react';
 import ordi_trombi from '../../assets/ordi_trombi.webp';
 import ordi_parent from '../../assets/ordi_parent.webp';
 import './style.scss';
+import { connect } from 'react-redux';
 
-const Home = ({handleGetTeacherTrombi}) => {
+
+const Home = ({handleIsSuccess, isSuccessSubscribe}) => {
   // console.log(handleGetTeacherTrombi)
-
-  useEffect(() => {
-    // handleGetTeacherTrombi()
-  })
   
 return (
       <div className='home'>
@@ -46,4 +44,15 @@ return (
       </div>
   );
 }
-export default Home;
+
+const mapStateToProps = (state) => {
+  return ({
+          isLogged: state.auth.isLogged,
+          isSuccessSubscribe: state.auth.isSuccessSubscribe
+  
+      })
+  }
+  const mapDispatchToProps = (dispatch) => ({
+  })
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(Home);
