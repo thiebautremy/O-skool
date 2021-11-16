@@ -5,71 +5,46 @@ import Login from '../Login/login';
 import Subscribe from '../Subscribe/subscribe';
 import {Route} from 'react-router-dom';
 import Footer from '../Footer/footer';
-import Header from '../../containers/Headers/headers';
 import NavBar from '../NavBar/NavBar';
-import ParentForm from '../ParentForm/parentForm';
-import ParentProfil from '../../containers/parentProfil/parentProfil';
 import FormChildren from '../FormChildren/formChildren';
 import StudentsList from '../StudentsList/studentsList';
 import StudentDetail from '../StudentsList/studentDetail'
-import BoardParent from '../../containers/boardParent/boardParent';
 import LegalMentions from '../LegalMentions/legalmentions';
 import Contact from '../Contact/contact';
+import Header from '../Header/header';
+import { connect } from 'react-redux';
 
 
 import 'semantic-ui-css/semantic.min.css'
 
-function App() {
+function App(props) {
+  console.log(props.isLogged)
   return (
     <div className="App">
-    
         <Route path="/" exact>
-          <NavBar />
+          {props.isLogged ? <Header /> : <NavBar /> }
           <Home />
         </Route>
 
         <Route path="/login" exact>
-          <NavBar />
+        {props.isLogged ? <Header /> : <NavBar /> }
           <Login />
         </Route>
 
         <Route path="/subscribe" exact>
-          <NavBar />
+        {props.isLogged ? <Header /> : <NavBar /> }
           <Subscribe />
-        </Route>
-
-          {/* Route pour accèder au boardParent*/}
-          {/* <Route path="/boardParent" exact>
-            <Header />
-            <BoardParent />
-          </Route> */}
-          <Route path="/boardParent" exact>
-            <Header />
-            <BoardParent />
-          </Route>
-
-
-        {/* Route pour accèder au formulaire d'inscription parent */}
-        <Route path="/parentForm" exact>
-          <Header />
-          <ParentForm />
-        </Route>
-
-        {/* Route pour accèder au profil du parent */}
-        <Route path="/parentProfil" exact>
-          <Header />
-          <ParentProfil />
         </Route>
 
         {/* Route pour accèder au formulaire d'ajout d'enfant  */}
             <Route path="/formChildren" exact>
-              <Header />
+            {props.isLogged ? <Header /> : <NavBar /> }
             <FormChildren />
           </Route>
 
         {/* Route pour accèder à la liste des éléves  */}
         <Route path="/studentsList" exact>
-          <Header />
+        {props.isLogged ? <Header /> : <NavBar /> }
           <StudentsList />
         </Route>
         {/* <Route
@@ -87,18 +62,18 @@ function App() {
           /> */}
         {/* Route pour accèder au profil d'un éléve'  */}
         <Route path="/studentDetail/edit/:id" exact>
-          <Header />
+        {props.isLogged ? <Header /> : <NavBar /> }
           <StudentDetail />
         </Route>
 
         {/* Route pour accèder au mentions légales  */}
         <Route path="/legalMentions" exact>
-        <NavBar />
+        {props.isLogged ? <Header /> : <NavBar /> }
           <LegalMentions />
         </Route>
         {/* Route pour accèder à contact  */}
         <Route path="/contact" exact>
-          <NavBar />
+          {props.isLogged ? <Header /> : <NavBar /> }
             <Contact />
         </Route>
 
@@ -107,4 +82,11 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  isLogged: state.auth.isLogged
+});
+
+const mapDispatchToProps = (dispatch) => ({
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

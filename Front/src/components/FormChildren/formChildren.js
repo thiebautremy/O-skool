@@ -190,7 +190,7 @@ const FormChildren = ({
                     </form>
                 </div>
             </div>
-            {/* {!isLogged && <Redirect to="/" />}             */}
+            {!isLogged && <Redirect to="/" />}
             {isSuccess && <Redirect to="/studentsList" />}
         </main>
     )
@@ -205,7 +205,7 @@ FormChildren.propTypes = {
 
 const mapStateToProps = (state) => ({
     isSuccess: state.students.isSuccess,
-    // isLogged: state.auth.isLogged,
+    isLogged: state.auth.isLogged,
   });
   
   const mapDispatchToProps = (dispatch) => ({

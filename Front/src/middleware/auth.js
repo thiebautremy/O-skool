@@ -1,6 +1,7 @@
 import axios from 'axios';
 import {
-  HANDLE_SUBMIT
+  HANDLE_SUBMIT,
+  login
 } from '../actions/auth';
 import {fetchInfosStudentProfil, fetchInfosTeacherProfil } from '../actions/app';
 
@@ -26,11 +27,24 @@ const auth = (store) => (next) => (action) => {
           password: state.auth.password,
         }
       }).then(response => {
-        console.log(response)
+        console.log(response.data.response)
+        if(response.data.response === 'password valid') {
+          console.log(response.data.user[0].user_name)
+          store.dispatch(login(response.data.user[0].user_name))
+          localStorage.setItem('isLogged', true);
+          localStorage.setItem('userName', response.data.user[0].user_name);
+        }else {
+
+        }
         // localStorage.setItem('token', response.data.token);    
 
       })
-      .catch((error) => console.log(error)) 
+      .catch((error) => {
+      if(error == 'Request failed with status code 500'){
+        //TODO faire message d'erreur
+        console.log("faire message d'erreur")
+        }
+      }) 
       break;
     }
     default: next(action);

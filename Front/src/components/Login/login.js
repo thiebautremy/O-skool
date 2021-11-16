@@ -1,11 +1,11 @@
 import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
-import {Redirect} from 'react-router-dom';
 import { isSuccess, handleChangeAuth, handleSubmit } from '../../actions/auth'
 import { connect } from 'react-redux';
 import ModalMessage from '../Modal/modal'
 
 import './style.scss';
+import { Redirect } from 'react-router-dom';
 
 const Login = ({
   email,
@@ -13,11 +13,12 @@ const Login = ({
   handleChange,
   handleOnSubmit,
   handleIsSuccess,
-  isSuccessSubscribe
+  isSuccessSubscribe,
+  isLogged
 }) => {
+  
   const handleOnClick = (event) => {
     event.preventDefault();
-    console.log('test')
     handleOnSubmit();
   };
   const handleOnChange = (event) => {
@@ -33,16 +34,17 @@ const Login = ({
   })
   return (
       <main className='login'>
+      {isLogged && <Redirect to="/" />}
         <div className="login__login">
           <h2 className="login__login__title">Se connecter</h2>
-          {isSuccessSubscribe && 
-            <ModalMessage 
-              title={''}
-              message={'Compte crée avec succès, vous pouvez maintenant vous connecter'}
-              confirmBtn= {false}
-              handleYes={''}
-              />
-          }
+            {isSuccessSubscribe &&
+              <ModalMessage 
+                title={''}
+                message={'Compte crée avec succès, vous pouvez maintenant vous connecter'}
+                confirmBtn= {false}
+                handleYes={''}
+                />
+            }
           <form 
             className="login__login__form"
             onSubmit={(evt) => handleOnClick(evt)}
@@ -75,8 +77,6 @@ const Login = ({
   
     
 Login.propTypes = {
-  email: PropTypes.string.isRequired,
-  password: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
   handleOnSubmit: PropTypes.func.isRequired
 };
@@ -97,7 +97,6 @@ const mapStateToProps = (state) => {
         dispatch(handleChangeAuth(value, name))
       },
       handleOnSubmit: () => {
-        console.log('putain !!!')
         dispatch(handleSubmit())
       }
   })

@@ -2,13 +2,14 @@ import {
   HANDLE_SUBMIT, 
   HANDLE_CHANGE_AUTH,
   LOGOUT,
+  LOGIN
 } from '../actions/auth';
 
 export const initialState = {
     email: '',
     password: '',
     isLogged: false,
-    id: '',
+    userName: '',
   }
 const auth = (state = initialState, action = {} ) => {
   switch(action.type) {
@@ -22,6 +23,13 @@ const auth = (state = initialState, action = {} ) => {
     //     connexion,
     //   }
     // }
+    case LOGIN: {
+      return {
+        ...state,
+        isLogged: true,
+        userName: action.value
+      }
+    }
     case HANDLE_CHANGE_AUTH: {
       return {
         ...state,
@@ -29,14 +37,14 @@ const auth = (state = initialState, action = {} ) => {
       }
     }
     case LOGOUT: {
+      localStorage.setItem('isLogged', false)
+      localStorage.setItem('userName', '')
       return {
         ...state,
         email: '',
         password: '',
-        isTeacher: false,
-        isParent: false,
         isLogged: false,
-        id: '',
+        userName: '',
       }
     }
     default: 

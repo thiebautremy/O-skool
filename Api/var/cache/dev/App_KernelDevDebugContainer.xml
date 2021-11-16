@@ -5225,11 +5225,18 @@
         <argument key="sr" type="service_closure" id="App\Repository\StudentRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.E8xlF1Y" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.Fql1fQq" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="ur" type="service_closure" id="App\Repository\UserRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.elixb1Q" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\StudentsController::getStudent" type="service_closure" id=".service_locator.470qnw1"/>
         <argument key="App\Controller\StudentsController::getStudents" type="service_closure" id=".service_locator.470qnw1"/>
+        <argument key="App\Controller\SubscribeController::loginCheck" type="service_closure" id=".service_locator.Fql1fQq"/>
         <argument key="App\Kernel::loadRoutes" type="service_closure" id=".service_locator.KfbR3DY"/>
         <argument key="App\Kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.KfbR3DY"/>
         <argument key="App\Kernel::terminate" type="service_closure" id=".service_locator.KfwZsne"/>
@@ -5238,6 +5245,7 @@
         <argument key="kernel::terminate" type="service_closure" id=".service_locator.KfwZsne"/>
         <argument key="App\Controller\StudentsController:getStudent" type="service_closure" id=".service_locator.470qnw1"/>
         <argument key="App\Controller\StudentsController:getStudents" type="service_closure" id=".service_locator.470qnw1"/>
+        <argument key="App\Controller\SubscribeController:loginCheck" type="service_closure" id=".service_locator.Fql1fQq"/>
         <argument key="kernel:loadRoutes" type="service_closure" id=".service_locator.KfbR3DY"/>
         <argument key="kernel:registerContainerConfiguration" type="service_closure" id=".service_locator.KfbR3DY"/>
         <argument key="kernel:terminate" type="service_closure" id=".service_locator.KfwZsne"/>
@@ -5507,12 +5515,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
-      <argument type="service" id=".service_locator.E8xlF1Y"/>
+      <argument type="service" id=".service_locator.elixb1Q"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
-      <argument type="service" id=".service_locator.E8xlF1Y"/>
+      <argument type="service" id=".service_locator.elixb1Q"/>
     </service>
     <service id=".doctrine.orm.default_metadata_driver.inner" class="Doctrine\Persistence\Mapping\Driver\MappingDriverChain">
       <call method="addDriver">
@@ -6352,7 +6360,7 @@
     <service id="ApiPlatform\Core\Security\ResourceAccessCheckerInterface" alias="api_platform.security.resource_access_checker"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.0GV1BZZ" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.E8xlF1Y"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.elixb1Q"/>
     <service id="session" alias=".session.do-not-use" public="true">
       <deprecated package="symfony/framework-bundle" version="5.3">The "%alias_id%" service and "SessionInterface" alias are deprecated, use "$requestStack-&gt;getSession()" instead.</deprecated>
     </service>
@@ -6422,6 +6430,7 @@
     <service id=".service_locator._5g_Wvc" alias=".service_locator.KfwZsne"/>
     <service id=".service_locator.JBAFp66" alias=".service_locator.KfbR3DY"/>
     <service id=".service_locator.46PcW2m" alias=".service_locator.470qnw1"/>
+    <service id=".service_locator.b1r3Uvr" alias=".service_locator.Fql1fQq"/>
     <service id=".service_locator.wKF4yn1" alias=".service_locator.anofQPJ"/>
     <service id=".service_locator.smJsCNt" alias=".service_locator.W9y3dzm"/>
   </services>

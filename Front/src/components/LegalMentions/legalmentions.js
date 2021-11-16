@@ -1,7 +1,9 @@
 import React from 'react';
 import './style.scss';
+import {Redirect} from 'react-router-dom';
+import { connect } from 'react-redux';
 
-const LegalMentions = () => (
+const LegalMentions = ({isLogged}) => (
     <main className="LegalMentions">
         <h1>MENTIONS LÉGALES</h1>
         
@@ -19,7 +21,16 @@ const LegalMentions = () => (
                 Toutefois, des erreurs ou omissions peuvent survenir. L’internaute devra donc s’assurer de l’exactitude des informations auprès de , et signaler toutes modifications du site qu’il jugerait utile. n’est en aucun cas responsable de l’utilisation faite de ces informations, et de tout préjudice direct ou indirect pouvant en découler.
             </p>
         </article>
+        {!isLogged && <Redirect to="/" />}
     </main>
 );
 
-export default LegalMentions;
+const mapStateToProps = (state) => {
+    return ({
+            isLogged: state.auth.isLogged,
+    
+        })
+    }
+const mapDispatchToProps = (dispatch) => ({})
+    
+export default connect(mapStateToProps, mapDispatchToProps)(LegalMentions);

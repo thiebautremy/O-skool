@@ -10,6 +10,7 @@ export const CHANGE_USERNAME = 'CHANGE_USERNAME'
 
 //logout 
 export const LOGOUT = 'LOGOUT';
+export const LOGIN = 'LOGIN';
 
 //login
 export const SAVE_PARENT_INFOS = 'SAVE_PARENT_INFOS';
@@ -19,6 +20,10 @@ export const SAVE_TEACHER_INFOS = 'SAVE_TEACHER_INFOS';
 export const HANDLE_SUBMIT = 'HANDLE_SUBMIT';
 // ACTIONS CREATOR
 
+export const login = (value) => ({
+  type: LOGIN,
+  value
+})
 // changer un inputValue
 export const handleChangeSubscribe = (value, name) => ({
     type: HANDLE_CHANGE_SUBSCRIBE,

@@ -3,6 +3,7 @@ import {Icon} from 'semantic-ui-react';
 import ordi_trombi from '../../assets/ordi_trombi.webp';
 import ordi_parent from '../../assets/ordi_parent.webp';
 import './style.scss';
+import {Redirect} from 'react-router-dom';
 import { connect } from 'react-redux';
 
 
@@ -11,6 +12,7 @@ const Home = ({handleIsSuccess, isSuccessSubscribe}) => {
   
 return (
       <div className='home'>
+      {!localStorage.getItem('isLogged') && <Redirect to="/" />}
         <main className="home__main">
         <div id="corner"></div>
           <section>

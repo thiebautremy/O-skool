@@ -12,6 +12,7 @@ return [
         '/api/studentsList' => [[['_route' => 'api_studentsList', '_controller' => 'App\\Controller\\StudentsController::getStudents'], null, ['GET' => 0], null, false, false, null]],
         '/api/student/add' => [[['_route' => 'api_student_add', '_controller' => 'App\\Controller\\StudentsController::newStudent'], null, ['POST' => 0], null, false, false, null]],
         '/api/user/add' => [[['_route' => 'api_user_add', '_controller' => 'App\\Controller\\SubscribeController::newUser'], null, ['POST' => 0], null, false, false, null]],
+        '/api/user/login_check' => [[['_route' => 'api_user_login_check', '_controller' => 'App\\Controller\\SubscribeController::loginCheck'], null, ['POST' => 0], null, false, false, null]],
         '/teachers/teachers' => [[['_route' => 'teachers_list', '_controller' => 'App\\Controller\\TeachersController::list'], null, null, null, false, false, null]],
     ],
     [ // $regexpList

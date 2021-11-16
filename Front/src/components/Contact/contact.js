@@ -6,8 +6,10 @@ import {
   TextArea,
 } from 'semantic-ui-react'
 import './style.scss';
+import {Redirect} from 'react-router-dom';
+import { connect } from 'react-redux';
 
-const Contact = () => (
+const Contact = ({isLogged}) => (
     <main className="contact">
         <h1>Nous Contacter</h1>
         <Form className="contact__form">
@@ -35,8 +37,17 @@ const Contact = () => (
         />
         <Form.Field control={Button}>Envoyer</Form.Field>
         </Form>
+        {!isLogged && <Redirect to="/" />}
     </main>
 );
 
 
-export default Contact
+const mapStateToProps = (state) => {
+    return ({
+            isLogged: state.auth.isLogged,
+    
+        })
+    }
+const mapDispatchToProps = (dispatch) => ({})
+    
+export default connect(mapStateToProps, mapDispatchToProps)(Contact);

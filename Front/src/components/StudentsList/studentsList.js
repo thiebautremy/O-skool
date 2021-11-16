@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import {Card, Button} from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import Student from './student';
@@ -71,7 +71,7 @@ return(
           </Card.Group>
         }
       </section>
-      {/* {!isLogged && <Redirect to="/" />} */}
+      {!isLogged && <Redirect to="/" />}
     </div>
 )};
 
@@ -91,7 +91,7 @@ const mapStateToProps = (state) => {
   
       })
   }
-  const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch) => ({
       handleDeconnexion: () => {
           // dispatch(logOut());
         },
@@ -104,4 +104,4 @@ const mapStateToProps = (state) => {
       }
   })
   
-  export default connect(mapStateToProps, mapDispatchToProps)(StudentsList);
+export default connect(mapStateToProps, mapDispatchToProps)(StudentsList);

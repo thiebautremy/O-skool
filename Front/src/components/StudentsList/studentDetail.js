@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import { Card, Image, Icon, Menu } from 'semantic-ui-react';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './style.scss';
 import elvis from '../../assets/elvis.png';
@@ -76,6 +76,7 @@ return (
                 </Card.Content>
           </Card>
         }
+        {!props.isLogged && <Redirect to="/" />}
     </div>
 );
 }
