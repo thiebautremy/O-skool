@@ -14,7 +14,8 @@ export const DELETE_CHILDREN = 'DELETE_CHILDREN';
 // formChildren
 export const ADD_CHILDREN = 'ADD_CHILDREN';
 export const IS_SUCCESS = 'IS_SUCCESS';
-
+export const CHANGE_ERROR_MESSAGE = 'CHANGE_ERROR_MESSAGE';
+export const CHANGE_ERROR_MESSAGE_VISIBILITY = 'CHANGE_ERROR_MESSAGE_VISIBILITY'
 
 // fetch Infos Trombinoscope
 export const FETCH_INFOS_STUDENTS_TROMBI = 'FETCH_INFOS_STUDENTS_TROMBI'; 
@@ -26,7 +27,14 @@ export const SAVE_INFOS_STUDENTS_DETAIL = 'SAVE_INFOS_STUDENTS_DETAIL';
 
 
 // ACTIONS CREATOR
-
+export const changeErrorMessageVisibility = (value) => ({
+  type: CHANGE_ERROR_MESSAGE_VISIBILITY,
+  value
+})
+export const changeErrorMessage = (value) => ({
+  type: CHANGE_ERROR_MESSAGE,
+  value
+})
 
 export const fetchInfosTeacherProfil = (value) => ({
   type: FETCH_INFOS_TEACHER_PROFIL,

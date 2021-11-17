@@ -1,7 +1,16 @@
 import React from 'react'
 import { Button, Header, Icon, Modal } from 'semantic-ui-react'
+import { changeErrorModal, changeMessageErrorModal } from '../../actions/auth'
+import { connect } from 'react-redux';
 
-function ModalMessage({title, message, confirmBtn, handleYes}) {
+function ModalMessage({
+  title, 
+  message, 
+  confirmBtn, 
+  handleYes,
+  handeChangeErrorModal,
+  handleChangeMessageErrorModal
+}) {
   const [open, setOpen] = React.useState(true)
 
   return (
@@ -9,7 +18,11 @@ function ModalMessage({title, message, confirmBtn, handleYes}) {
       closeIcon
       open={open}
       // trigger={<Button>Show Modal</Button>}
-      onClose={() => setOpen(false)}
+      onClose={() => {
+          setOpen(false)
+          handeChangeErrorModal(false)
+          handleChangeMessageErrorModal('')
+        }}
       onOpen={() => setOpen(true)}
     >
       <Header content={title} />
@@ -38,4 +51,17 @@ function ModalMessage({title, message, confirmBtn, handleYes}) {
   )
 }
 
-export default ModalMessage
+const mapStateToProps = (state) => {
+  return ({})
+}
+
+const mapDispatchToProps = (dispatch) => ({
+    handeChangeErrorModal: (value) => {
+      dispatch(changeErrorModal(value))
+    },
+    handleChangeMessageErrorModal: (value) => {
+      dispatch(changeMessageErrorModal(value))
+    }
+})
+  
+export default connect(mapStateToProps, mapDispatchToProps)(ModalMessage)

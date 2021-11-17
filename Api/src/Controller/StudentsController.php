@@ -60,15 +60,14 @@ class StudentsController extends AbstractController
             ->setZipCode($data['data']['zip_code'])
             ->setPhone($data['data']['phone'])
             ->setEmail($data['data']['email'])
-            ->setHealth($data['data']['health'])
-            ->setHobbies($data['data']['hobbies'])
+            ->setHealth($data['data']['health'] ? $data['data']['health'] : '')
+            ->setHobbies($data['data']['hobbies'] ? $data['data']['hobbies'] : '')
             ->setClass($data['data']['class'])
-            ->setRandom($data['data']['random']);
+            ->setRandom($data['data']['random'] ? $data['data']['random'] : '');
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($newStudent);
         $entityManager->flush();
 
-        // return new Response('Elève ajouté', Response::HTTP_OK);
         return new JsonResponse(
             [
                 'status' => JsonResponse::HTTP_CREATED,
@@ -76,7 +75,6 @@ class StudentsController extends AbstractController
             ],
             
         );
-        // return new JsonResponse(['hearts' => rand(5, 100)]);
     }
     
 

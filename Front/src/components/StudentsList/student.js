@@ -7,16 +7,9 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 const Student = (
-  // id,
-  // firstNameStudent,
-  // lastNameStudent,
-  // birthday,
-  // health,
-  // hobbies,
   props
 ) => {
   // const birthdayFormated = moment(birthday).format('DD/MM/YYYY');
-  console.log(props)
   return (
     
       <Card className="studentsList__list__card"> 

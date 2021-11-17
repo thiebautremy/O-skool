@@ -8,6 +8,7 @@ import { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchInfosStudentsDetail } from '../../actions/app'
 
+
 const StudentDetail = (
 props
 ) => {
@@ -27,18 +28,22 @@ return (
           Retour à la liste des élèves
       </Menu.Item>
     </Link>
+    
     {props.student.id &&
       <Card className="studentsList__list__card">
         <Image 
           src={elvis} 
           className="studentsList__list__card__picture"
-          size="small"
           inline
         />
           <Card.Content>
             {props.student.first_name &&
               <Card.Header className="studentsList__list__card__header">
                   {props.student.first_name.toUpperCase()} {props.student.last_name.toUpperCase()}
+                <Icon 
+                  name="trash alternate"
+                  onClick={() => console.log('click sur delete')}
+                  />
               </Card.Header>}
                   <Card.Meta>
                     <Card.Description>
@@ -66,7 +71,7 @@ return (
                     </Card.Description>
                     <Card.Description>
                       <Icon name='sitemap'/>
-                      <p>{props.student.class && props.student.class}</p>
+                      <p className ="card_class">{props.student.class && props.student.class}</p>
                     </Card.Description>
                     <Card.Description>
                       <Icon name='info'/>
@@ -84,16 +89,13 @@ return (
 const mapStateToProps = (state) => {
 return ({
         isLogged: state.auth.isLogged,
-        student: state.students.student, 
-
+        student: state.students.student
     })
 }
 const mapDispatchToProps = (dispatch) => ({
     handleDeconnexion: () => {
-        // dispatch(logOut());
       },
-    fetchStudentDetail: (value) => {
-        // je vais chercher et non enregistrer dans le store. 
+    fetchStudentDetail: (value) => { 
         dispatch(fetchInfosStudentsDetail(value))
     }
 })

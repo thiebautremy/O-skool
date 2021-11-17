@@ -5,8 +5,11 @@ import {
     FETCH_INFOS_STUDENTS_DETAIL,
     saveInfosStudentsDetail,
     ADD_CHILDREN,
-    isSuccess
+    isSuccess,
+    changeErrorMessage,
+    changeErrorMessageVisibility
    } from '../actions/app';
+import { changeErrorModal, changeMessageErrorModal } from '../actions/auth';
 
 const teacher = (store) => (next) => (action) => {
     // const state =store.getState();
@@ -74,10 +77,19 @@ const teacher = (store) => (next) => (action) => {
               .then(response => {
                 console.log(response.status)
                 if(response.status === 200){
-                  store.dispatch(isSuccess(true));
+                  store.dispatch(isSuccess(true))
+                  store.dispatch(changeErrorMessageVisibility(false))
+                  store.dispatch(changeErrorMessage(''))
                 } 
               })
-              .catch((error) => console.log(error))
+              .catch((error) => {
+                console.log(error)
+                if(error == 'Error: Request failed with status code 500'){
+                  console.log(error)
+                  store.dispatch(changeErrorMessageVisibility(true))
+                  store.dispatch(changeErrorMessage("Seul les champs 'Problème de santé', 'Loisirs' et 'Divers' peuvent être nuls"))
+                }
+              })
             break
           }
         default:

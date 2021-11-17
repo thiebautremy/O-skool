@@ -9,9 +9,35 @@
   &__image {
     width: 20%;
   }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+  }
+
   &__title {
     color: rgb(58,102,177);
-  font-size: 1.3em;
-  font-weight: bold;
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin: 0 6rem 0 0rem;
+
+    strong {
+      color: rgb(37, 66, 117);
+    }
+  }
+
+  .item {
+    color: rgb(58,102,177);
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-top: 0;
+    margin-right: 2rem;
+    &:hover{
+      color: white;
+    }
+
+    strong {
+      font-weight: bold;
+    }
   }
 }

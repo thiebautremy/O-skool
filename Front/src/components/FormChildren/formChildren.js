@@ -5,6 +5,7 @@ import { Input, Menu, Icon } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { addChildren } from '../../actions/app';
 import { logOut } from '../../actions/auth';
+import ModalMessage from '../Modal/modal'
 
 import './style.scss';
 
@@ -13,6 +14,8 @@ const FormChildren = ({
     handleDeconnexion, 
     isLogged,
     isSuccess,
+    errorMessage,
+    errorMessageVisibility
 }) => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -41,16 +44,14 @@ const FormChildren = ({
                 Retour à la liste des élèves
             </Menu.Item>
         </Link>
-            {/* <Dropdown text='Choisir' className="Dropdown">
-                <Dropdown.Menu>
-                    <Link to="/parentProfil"><Dropdown.Item text='Profil Parent' /></Link>
-                    <Dropdown.Divider />
-                    <Dropdown.Item
-                        text='Se déconnecter'
-                        onClick={handleOnDeconnexion}
-                    />
-                </Dropdown.Menu>
-            </Dropdown> */}
+        {errorMessageVisibility && 
+          <ModalMessage 
+            title={''}
+            message= {errorMessage}
+            confirmBtn= {false}
+            handleYes={''}
+            />
+        }
             <h2 className="formChildren__formChildren__title">Ajouter un enfant
                 </h2>
             <div className="formChildren__formChildren">
@@ -206,6 +207,8 @@ FormChildren.propTypes = {
 const mapStateToProps = (state) => ({
     isSuccess: state.students.isSuccess,
     isLogged: state.auth.isLogged,
+    errorMessage: state.students.errorMessage,
+    errorMessageVisibility: state.students.errorMessageVisibility
   });
   
   const mapDispatchToProps = (dispatch) => ({

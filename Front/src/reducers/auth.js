@@ -2,27 +2,33 @@ import {
   HANDLE_SUBMIT, 
   HANDLE_CHANGE_AUTH,
   LOGOUT,
-  LOGIN
+  LOGIN,
+  CHANGE_ERROR_MODAL,
+  CHANGE_MESSAGE_ERROR_MODAL
 } from '../actions/auth';
 
 export const initialState = {
     email: '',
     password: '',
     isLogged: false,
+    errorModal: false,
+    messageErrorModal: '',
     userName: '',
   }
 const auth = (state = initialState, action = {} ) => {
   switch(action.type) {
-    // case HANDLE_SUBMIT: {
-    //   const connexion = {
-    //     email: action.email,
-    //     password: action.password
-    //   }
-    //   return {
-    //     ...state,
-    //     connexion,
-    //   }
-    // }
+    case CHANGE_ERROR_MODAL: {
+      return {
+        ...state,
+        errorModal: action.value
+      }
+    }
+    case CHANGE_MESSAGE_ERROR_MODAL: {
+      return {
+        ...state,
+        messageErrorModal: action.value
+      }
+    }
     case LOGIN: {
       return {
         ...state,

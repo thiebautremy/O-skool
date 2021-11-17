@@ -1,10 +1,9 @@
+import './style.scss';
 import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
-import { isSuccess, handleChangeAuth, handleSubmit } from '../../actions/auth'
+import { isSuccess, handleChangeAuth, handleSubmit} from '../../actions/auth'
 import { connect } from 'react-redux';
 import ModalMessage from '../Modal/modal'
-
-import './style.scss';
 import { Redirect } from 'react-router-dom';
 
 const Login = ({
@@ -14,7 +13,9 @@ const Login = ({
   handleOnSubmit,
   handleIsSuccess,
   isSuccessSubscribe,
-  isLogged
+  isLogged,
+  errorModal,
+  messageErrorModal
 }) => {
   
   const handleOnClick = (event) => {
@@ -32,9 +33,18 @@ const Login = ({
       handleIsSuccess(false)
     }, 5000)
   })
+
   return (
       <main className='login'>
       {isLogged && <Redirect to="/" />}
+      {errorModal && 
+          <ModalMessage 
+            title={''}
+            message= {messageErrorModal}
+            confirmBtn= {false}
+            handleYes={''}
+            />
+        }
         <div className="login__login">
           <h2 className="login__login__title">Se connecter</h2>
             {isSuccessSubscribe &&
@@ -85,8 +95,9 @@ Login.propTypes = {
 const mapStateToProps = (state) => {
   return ({
           isLogged: state.auth.isLogged,
-          isSuccessSubscribe: state.subscribe.isSuccessSubscribe
-  
+          isSuccessSubscribe: state.subscribe.isSuccessSubscribe,
+          errorModal: state.auth.errorModal,
+          messageErrorModal: state.auth.messageErrorModal
       })
   }
   const mapDispatchToProps = (dispatch) => ({

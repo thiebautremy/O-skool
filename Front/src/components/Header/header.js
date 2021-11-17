@@ -9,21 +9,20 @@ import { logOut } from '../../actions/auth';
 const Header = ({userName, handleLogOut}) => (
     <header className="header">
       <Image src={oskool} className="header__image" alt="logo"/>
-      <div>
-      <Link to="/studentsList">
-                <Menu.Item
-                      content="Liste des étudiants"
-                />
-            </Link>
-            <Link>
-                <Menu.Item
-                      content="Déconnexion"
-                      // active={activeItem === 'messages'}
-                      onClick={handleLogOut}
-                />
-            </Link>
-        <h1 className="header__title">Bonjour {userName}</h1>
-      
+      <div className="header__nav">
+        <h1 className="header__title">Bonjour <strong>{userName}</strong></h1>
+        <Link to="/studentsList">
+            <Menu.Item
+                content="Liste des étudiants"
+          />
+        </Link>
+        <Link to="#">
+            <Menu.Item
+                content="Déconnexion"
+                // active={activeItem === 'messages'}
+                onClick={handleLogOut}
+          />
+        </Link>
       </div>
     </header>
 );

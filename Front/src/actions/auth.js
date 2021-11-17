@@ -16,10 +16,21 @@ export const LOGIN = 'LOGIN';
 export const SAVE_PARENT_INFOS = 'SAVE_PARENT_INFOS';
 export const SAVE_TEACHER_INFOS = 'SAVE_TEACHER_INFOS';
 
+//AUTH
+export const CHANGE_ERROR_MODAL = 'CHANGE_ERROR_MODAL';
+export const CHANGE_MESSAGE_ERROR_MODAL = 'CHANGE_MESSAGE_ERROR_MODAL';
 
 export const HANDLE_SUBMIT = 'HANDLE_SUBMIT';
 // ACTIONS CREATOR
 
+export const changeMessageErrorModal = (value) => ({
+  type: CHANGE_MESSAGE_ERROR_MODAL,
+  value
+})
+export const changeErrorModal = (value) => ({
+  type: CHANGE_ERROR_MODAL,
+  value
+})
 export const login = (value) => ({
   type: LOGIN,
   value

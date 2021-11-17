@@ -1,7 +1,9 @@
 import axios from 'axios';
 import {
   HANDLE_SUBMIT,
-  login
+  login,
+  changeErrorModal,
+  changeMessageErrorModal
 } from '../actions/auth';
 import {fetchInfosStudentProfil, fetchInfosTeacherProfil } from '../actions/app';
 
@@ -27,22 +29,21 @@ const auth = (store) => (next) => (action) => {
           password: state.auth.password,
         }
       }).then(response => {
-        console.log(response.data.response)
         if(response.data.response === 'password valid') {
-          console.log(response.data.user[0].user_name)
           store.dispatch(login(response.data.user[0].user_name))
-          localStorage.setItem('isLogged', true);
-          localStorage.setItem('userName', response.data.user[0].user_name);
+          store.dispatch(changeErrorModal(false))
+          store.dispatch(changeMessageErrorModal(''))
         }else {
-
+          store.dispatch(changeMessageErrorModal('Mot de passe non valide'))
+          store.dispatch(changeErrorModal(true))
         }
         // localStorage.setItem('token', response.data.token);    
 
       })
       .catch((error) => {
-      if(error == 'Request failed with status code 500'){
-        //TODO faire message d'erreur
-        console.log("faire message d'erreur")
+      if(error == 'Error: Request failed with status code 500'){
+        store.dispatch(changeMessageErrorModal('Utilisateur inconnu'))
+        store.dispatch(changeErrorModal(true))
         }
       }) 
       break;

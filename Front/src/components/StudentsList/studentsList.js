@@ -30,25 +30,10 @@ return(
   
   <div className="studentsList">
       <header className="studentsList__header">
-        <h1>Trombinoscope de la classe </h1>
-        {/* <Dropdown text='Choisir' className="teacherProfil__dropdown">
-        <Dropdown.Menu>
-          <Link to="/teacherProfil"><Dropdown.Item text='Mon profil' /></Link>
-          <Dropdown.Divider />
-          <Link to="/studentsList"><Dropdown.Item text='Trombinoscope' /></Link>
-          <Dropdown.Divider />
-          <Dropdown.Item 
-            text='Se déconnecter'
-            onClick={handleOnDeconnexion}
-          />
-        </Dropdown.Menu>
-      </Dropdown> */}
-      
+        <h1>Trombinoscope de la classe </h1>      
         <Link to="/formChildren">
           <Button> Ajouter un éléve</Button>
         </Link>
-      
-      
       </header>
       <section className="studentsList__list">
         {isSuccess && 

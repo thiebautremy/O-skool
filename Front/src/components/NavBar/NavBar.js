@@ -7,7 +7,6 @@ import './style.scss';
 
 
 const NavBar = ({handleLogOut}) => {
-  console.log(localStorage.getItem('isLogged'))
   return(  
   <div className='NavBar'>
     <header className="NavBar__header">
