@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button, Header, Icon, Modal } from 'semantic-ui-react'
 import { changeErrorModal, changeMessageErrorModal } from '../../actions/auth'
+import { changeConfirmDeleteModal } from '../../actions/app'
 import { connect } from 'react-redux';
 
 function ModalMessage({
@@ -9,20 +10,22 @@ function ModalMessage({
   confirmBtn, 
   handleYes,
   handeChangeErrorModal,
-  handleChangeMessageErrorModal
+  handleChangeMessageErrorModal,
+  handleChangeConfirmDeleteModal
 }) {
   const [open, setOpen] = React.useState(true)
-
+  const handleOnClose = () => {
+    handeChangeErrorModal(false);
+    handleChangeConfirmDeleteModal(false);
+    handleChangeMessageErrorModal('');
+    setOpen(false);
+  }
   return (
     <Modal
       closeIcon
       open={open}
       // trigger={<Button>Show Modal</Button>}
-      onClose={() => {
-          setOpen(false)
-          handeChangeErrorModal(false)
-          handleChangeMessageErrorModal('')
-        }}
+      onClose={() => handleOnClose()}
       onOpen={() => setOpen(true)}
     >
       <Header content={title} />
@@ -34,7 +37,7 @@ function ModalMessage({
       {
           confirmBtn === true &&
             <Modal.Actions>
-                <Button color='red' onClick={() => setOpen(false)}>
+                <Button color='red' onClick={() => handleOnClose()}>
                 <Icon name='remove' /> Non
                 </Button>
                 <Button 
@@ -61,6 +64,9 @@ const mapDispatchToProps = (dispatch) => ({
     },
     handleChangeMessageErrorModal: (value) => {
       dispatch(changeMessageErrorModal(value))
+    },
+    handleChangeConfirmDeleteModal: (value) => {
+      dispatch(changeConfirmDeleteModal(value))
     }
 })
   

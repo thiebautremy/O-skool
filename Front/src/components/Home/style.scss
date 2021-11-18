@@ -35,7 +35,7 @@
         width: 8rem;
         height: 8rem;
         position: absolute;
-        background-color: rgb(255,161,74);
+        background-color: rgba(170, 229, 200, 0.8);
         bottom: -0.5rem;
         right: -0.5rem;
         z-index: -1;
@@ -84,7 +84,7 @@
   width: 70px;
   display: block;
   border-radius: 0pt 0pt 0pt 5px;
-  border-color: rgba(255, 161, 74, 0.8) rgba(255, 161 , 74, 0.8) rgba(45, 139 ,222, .5) rgba(45, 139, 222, .5);
+  border-color: rgba(170, 229, 200, 0.8) rgba(170, 229, 200, 0.8) rgba(45, 139 ,222, .5) rgba(45, 139, 222, .5);
   border-width: 35px;
   box-shadow: 10px 10px 10px rgba(45,139,222, .8);
 }

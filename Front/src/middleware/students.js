@@ -7,7 +7,9 @@ import {
     ADD_CHILDREN,
     isSuccess,
     changeErrorMessage,
-    changeErrorMessageVisibility
+    changeErrorMessageVisibility,
+    DELETE_CHILDREN,
+    changeSuccesDelete
    } from '../actions/app';
 import { changeErrorModal, changeMessageErrorModal } from '../actions/auth';
 
@@ -91,6 +93,28 @@ const teacher = (store) => (next) => (action) => {
                 }
               })
             break
+          }
+          case DELETE_CHILDREN: {
+            // https://localhost:8000/api/studentsList/delete/21
+            console.log('delete children')
+            console.log(action)
+            console.log(action.id)
+            axios.get(`${ROOT_URL}api/studentsList/delete/${action.id}`,{
+              headers: {
+                // 'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                "Accept": "application/json",
+                'Access-Control-Allow-Origin': "*"
+              },
+              data: {
+                student_id: action.id
+              }
+            })
+            .then((response) => {
+                console.log('response', response);
+                store.dispatch(changeSuccesDelete(true))
+                // console.log('state middleware', state);
+            })
+            .catch((error) => console.log(error))
           }
         default:
             next(action);

@@ -77,7 +77,20 @@ class StudentsController extends AbstractController
         );
     }
     
-
-
-
+    /**
+     * @Route(
+     * "/api/studentsList/delete/{id}",
+     * name="api_student_delete",
+     * methods={"GET"},
+     * options={"expose"=true})
+     *
+     */
+    public function deleteStudent(Request $request, StudentRepository $sr, int $id): Response
+    {
+        $deleteStudent = $sr->find($id);
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($deleteStudent);
+        $entityManager->flush();
+        return new Response('etudiant supprimé', Response::HTTP_OK);
+    }
 }

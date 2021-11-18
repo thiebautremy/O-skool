@@ -7,13 +7,13 @@
 
   button.ui.button,
   button {
-    background-color: rgba(255, 161, 74, 0.8);
+    background-color: rgba(170, 229, 200, 0.8);
     border-radius: 5px;
     border: none;
     min-width: 20rem;
     padding: 1rem;
     cursor: pointer;
-    align-self: start;
+    align-self: center;
     font-size: 1.2rem;
     color: black;
     &:hover {

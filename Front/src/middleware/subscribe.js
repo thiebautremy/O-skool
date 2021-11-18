@@ -1,7 +1,9 @@
 import axios from 'axios';
 import { 
   SUBSCRIBE_SUBMIT,
-  isSuccess
+  isSuccess,
+  handleChangeSubscribe,
+  changeUsername
 } from '../actions/auth';
 
 const subscribe = (store) => (next) => (action) => {
@@ -23,10 +25,14 @@ const subscribe = (store) => (next) => (action) => {
           password: state.subscribe.password,
         }
       }).then(response => {
-        console.log(response.status)
-        console.log('state middleware 1');
-        store.dispatch(isSuccess(true))
-        // store.dispatch(subscribeSave(state.subscribe.email, state.subscribe.email, state.subscribe.role))
+        console.log(response.data.status)
+        if(response.data.status === 204){
+          console.log('information manquante')
+          //TODO Faire message pour l'utilisateur qu'il doit remplir toutes les infos
+        }
+        if(response.data.status === 201){
+          store.dispatch(isSuccess(true))
+        }
       })
       .catch((error) => console.log(error)) 
       break;

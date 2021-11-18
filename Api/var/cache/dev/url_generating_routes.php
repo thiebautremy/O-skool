@@ -7,6 +7,7 @@ return [
     'api_studentsList' => [[], ['_controller' => 'App\\Controller\\StudentsController::getStudents'], [], [['text', '/api/studentsList']], [], []],
     'api_studentsList_detail' => [['id'], ['_controller' => 'App\\Controller\\StudentsController::getStudent'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/api/studentsList']], [], []],
     'api_student_add' => [[], ['_controller' => 'App\\Controller\\StudentsController::newStudent'], [], [['text', '/api/student/add']], [], []],
+    'api_student_delete' => [['id'], ['_controller' => 'App\\Controller\\StudentsController::deleteStudent'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/api/studentsList/delete']], [], []],
     'api_user_add' => [[], ['_controller' => 'App\\Controller\\SubscribeController::newUser'], [], [['text', '/api/user/add']], [], []],
     'api_user_login_check' => [[], ['_controller' => 'App\\Controller\\SubscribeController::loginCheck'], [], [['text', '/api/user/login_check']], [], []],
     'teachers_list' => [[], ['_controller' => 'App\\Controller\\TeachersController::list'], [], [['text', '/teachers/teachers']], [], []],

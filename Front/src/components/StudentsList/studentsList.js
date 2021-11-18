@@ -5,22 +5,20 @@ import PropTypes from 'prop-types';
 import Student from './student';
 import './style.scss';
 import { connect } from 'react-redux';
-import { fetchInfosStudentsTrombi, isSuccess } from '../../actions/app'
+import { fetchInfosStudentsTrombi, isSuccess, changeSuccesDelete } from '../../actions/app'
 import ModalMessage from '../Modal/modal'
 
 const StudentsList = ({
-  handleDeconnexion,
   fetchStudentsTrombi,
   handleIsSuccess,
   students,
   isSuccess,
-  isLogged
+  isLogged,
+  handleChangeSuccessDelete
 }) => {
-  const handleOnDeconnexion = () => {
-    handleDeconnexion();
-  }
   useEffect(() => {
     fetchStudentsTrombi()
+    handleChangeSuccessDelete(false)
     setTimeout(() => {
       handleIsSuccess(false)
     }, 5000)
@@ -77,15 +75,14 @@ const mapStateToProps = (state) => {
       })
   }
 const mapDispatchToProps = (dispatch) => ({
-      handleDeconnexion: () => {
-          // dispatch(logOut());
-        },
       fetchStudentsTrombi: () => {
-          // je vais chercher et non enregistrer dans le store. 
           dispatch(fetchInfosStudentsTrombi())
       },
       handleIsSuccess: (value) => {
         dispatch(isSuccess(value))
+      },
+      handleChangeSuccessDelete: (value) => {
+        dispatch(changeSuccesDelete(value))
       }
   })
   

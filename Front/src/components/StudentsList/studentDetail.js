@@ -1,12 +1,12 @@
 import React, {useEffect} from 'react';
 import { Card, Image, Icon, Menu } from 'semantic-ui-react';
 import {Link, Redirect} from 'react-router-dom';
-import PropTypes from 'prop-types';
 import './style.scss';
 import elvis from '../../assets/elvis.png';
 import { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchInfosStudentsDetail } from '../../actions/app'
+import { fetchInfosStudentsDetail, changeConfirmDeleteModal, deleteChildren } from '../../actions/app'
+import ModalMessage from '../Modal/modal'
 
 
 const StudentDetail = (
@@ -15,20 +15,28 @@ props
 const { id } = useParams();
 useEffect(() =>{
   if(id !== 'undefined'){
-
     props.fetchStudentDetail(id)
   }
 }, [id])
 console.log(props)
 return (
   <div className="studentDetail">
-    <Link to="/studentsList" onClick={props.fetchStudentDetail()}>
+    <Link to="/studentsList" 
+    // onClick={props.fetchStudentDetail()}
+    >
       <Menu.Item>
         <Icon name='angle left' /> 
           Retour à la liste des élèves
       </Menu.Item>
     </Link>
-    
+    {props.confirmDeleteModal && 
+          <ModalMessage 
+            title={''}
+            message={"Confirmer suppression de l'étudiant"}
+            confirmBtn= {true}
+            handleYes={() => props.handleDeleteChildren(props.student.id)}
+            />
+        }
     {props.student.id &&
       <Card className="studentsList__list__card">
         <Image 
@@ -38,11 +46,13 @@ return (
         />
           <Card.Content>
             {props.student.first_name &&
-              <Card.Header className="studentsList__list__card__header">
-                  {props.student.first_name.toUpperCase()} {props.student.last_name.toUpperCase()}
+              <Card.Header    
+                className="studentsList__list__card__header">
+                  <p>{props.student.first_name.toUpperCase()} {props.student.last_name.toUpperCase()}</p>
                 <Icon 
                   name="trash alternate"
-                  onClick={() => console.log('click sur delete')}
+                  color='red'
+                  onClick={() => props.handleChangeConfirmDeleteModal(true)}
                   />
               </Card.Header>}
                   <Card.Meta>
@@ -82,6 +92,7 @@ return (
           </Card>
         }
         {!props.isLogged && <Redirect to="/" />}
+        {props.successDelete && <Redirect to="/studentsList" />}
     </div>
 );
 }
@@ -89,7 +100,9 @@ return (
 const mapStateToProps = (state) => {
 return ({
         isLogged: state.auth.isLogged,
-        student: state.students.student
+        student: state.students.student,
+        confirmDeleteModal: state.students.confirmDeleteModal,
+        successDelete: state.students.successDelete
     })
 }
 const mapDispatchToProps = (dispatch) => ({
@@ -97,6 +110,12 @@ const mapDispatchToProps = (dispatch) => ({
       },
     fetchStudentDetail: (value) => { 
         dispatch(fetchInfosStudentsDetail(value))
+    },
+    handleChangeConfirmDeleteModal: (value) => {
+      dispatch(changeConfirmDeleteModal(value))
+    },
+    handleDeleteChildren: (value) => {
+      dispatch(deleteChildren(value))
     }
 })
 

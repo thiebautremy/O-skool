@@ -3,7 +3,9 @@ import {
     SAVE_INFOS_STUDENTS_DETAIL,
     IS_SUCCESS,
     CHANGE_ERROR_MESSAGE,
-    CHANGE_ERROR_MESSAGE_VISIBILITY
+    CHANGE_ERROR_MESSAGE_VISIBILITY,
+    CHANGE_CONFIRM_DELETE_MODAL,
+    CHANGE_SUCCESS_DELETE
   } from '../actions/app';
 import { CHANGE_ERROR_MODAL } from '../actions/auth';
   
@@ -12,10 +14,22 @@ import { CHANGE_ERROR_MODAL } from '../actions/auth';
       student: [],
       isSuccess: false,
       errorMessage: '',
-      errorMessageVisibility: false
+      errorMessageVisibility: false,
+      confirmDeleteModal: false,
+      successDelete: false,
     }
   const students = (state = initialState, action = {} ) => {
     switch(action.type) {
+      case CHANGE_SUCCESS_DELETE:
+        return {
+          ...state,
+          successDelete: action.value
+        }
+      case CHANGE_CONFIRM_DELETE_MODAL:
+        return {
+          ...state,
+          confirmDeleteModal: action.value
+        }
       case CHANGE_ERROR_MESSAGE:
         return {
           ...state,

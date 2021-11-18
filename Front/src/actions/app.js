@@ -10,7 +10,9 @@ export const MODIFICATION_CHILDREN_PROFIL = 'MODIFICATION_CHILDREN_PROFIL';
 export const MODIFICATION_STUDENT_PROFIL = 'MODIFICATION_STUDENT_PROFIL';
 export const MODIFICATION_TEACHER_PROFIL = 'MODIFICATION_TEACHER_PROFIL';
 
-export const DELETE_CHILDREN = 'DELETE_CHILDREN'; 
+export const DELETE_CHILDREN = 'DELETE_CHILDREN';
+export const CHANGE_CONFIRM_DELETE_MODAL = 'CHANGE_CONFIRM_DELETE_MODAL';
+export const CHANGE_SUCCESS_DELETE = 'CHANGE_SUCCESS_DELETE';
 // formChildren
 export const ADD_CHILDREN = 'ADD_CHILDREN';
 export const IS_SUCCESS = 'IS_SUCCESS';
@@ -20,13 +22,20 @@ export const CHANGE_ERROR_MESSAGE_VISIBILITY = 'CHANGE_ERROR_MESSAGE_VISIBILITY'
 // fetch Infos Trombinoscope
 export const FETCH_INFOS_STUDENTS_TROMBI = 'FETCH_INFOS_STUDENTS_TROMBI'; 
 export const FETCH_INFOS_STUDENTS_DETAIL = 'FETCH_INFOS_STUDENTS_DETAIL'; 
-export const DELETE_STUDENT = 'DELETE_STUDENT';
 export const SAVE_INFOS_STUDENTS_TROMBI = 'SAVE_INFOS_STUDENTS_TROMBI';
 export const SAVE_INFOS_STUDENTS_DETAIL = 'SAVE_INFOS_STUDENTS_DETAIL';
 
 
 
 // ACTIONS CREATOR
+export const changeSuccesDelete = (value) => ({
+  type: CHANGE_SUCCESS_DELETE,
+  value
+})
+export const changeConfirmDeleteModal = (value) => ({
+  type: CHANGE_CONFIRM_DELETE_MODAL,
+  value
+})
 export const changeErrorMessageVisibility = (value) => ({
   type: CHANGE_ERROR_MESSAGE_VISIBILITY,
   value
@@ -107,10 +116,5 @@ export const fetchInfosStudentsTrombi = () => ({
 export const fetchInfosStudentsDetail = (id) => ({
   type: FETCH_INFOS_STUDENTS_DETAIL,
   id
-});
-
-export const deleteStudent = (deleteStudent) => ({
-  type: DELETE_STUDENT,
-  deleteStudent,
 });
 
