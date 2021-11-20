@@ -2,8 +2,8 @@ import axios from 'axios';
 import { 
   SUBSCRIBE_SUBMIT,
   isSuccess,
-  handleChangeSubscribe,
-  changeUsername
+  changeModalVisibilitySubscribe,
+  changeErrorMessageSubscribe
 } from '../actions/auth';
 
 const subscribe = (store) => (next) => (action) => {
@@ -27,8 +27,8 @@ const subscribe = (store) => (next) => (action) => {
       }).then(response => {
         console.log(response.data.status)
         if(response.data.status === 204){
-          console.log('information manquante')
-          //TODO Faire message pour l'utilisateur qu'il doit remplir toutes les infos
+          store.dispatch(changeErrorMessageSubscribe('Tous les champs doivent être remplis'))
+          store.dispatch(changeModalVisibilitySubscribe(true))
         }
         if(response.data.status === 201){
           store.dispatch(isSuccess(true))

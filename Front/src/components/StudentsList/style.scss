@@ -63,9 +63,9 @@ div.studentDetail {
     color: #000;
     text-decoration: none;
     font-size: 1.5rem;
-    padding: 2rem 2rem 7rem;
+    margin: 2rem 2rem 7rem;
     margin-left: 2rem;
-    display: block;
+    display: inline-block;
   }
 
   div.header {
@@ -91,7 +91,7 @@ div.studentDetail {
     margin: auto;
     display: flex;
     flex-direction: row;
-    width: 50%;
+    // width: 50%;
     margin-bottom: 5rem;
     background-color: #2d8bde;
 
@@ -129,6 +129,14 @@ div.studentDetail {
       align-items: center;
     }
   }
+
+  .studentDetail {
+    .studentsList__list__card {
+      img {
+        display: none !important;
+    }
+  }
+}
 }
 
 div.meta > span, div.meta div{
@@ -148,3 +156,4 @@ div.meta > span, div.meta div{
   margin-bottom: 0.2em;
   // border: 0.1em solid white;
 }
+

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { handleChangeSubscribe, subscribeSubmit, changeUsername} from '../../actions/auth';
+import ModalMessage from '../Modal/modal'
 // import Input from '../Input/input';
 
 import './style.scss';
@@ -16,7 +17,9 @@ const Subscribe = ({
   handleChange,
   handleChangeUsername,
   submitRegister,
-  isSuccessSubscribe
+  isSuccessSubscribe,
+  errorMessageSubscribe,
+  modaleVisibilitySubscribe
 }) => {
   const handleOnChange = (event) => {
     const value = event.target.value;
@@ -29,6 +32,14 @@ const Subscribe = ({
   };
   return (
         <main className='subscribe'>
+        {modaleVisibilitySubscribe && 
+          <ModalMessage 
+            title={''}
+            message= {errorMessageSubscribe}
+            confirmBtn= {false}
+            handleYes={''}
+            />
+        }
           <div className="subscribe">
             <h2 className="subscribe__subscribe__title">S'inscrire</h2>
             <form 
@@ -86,7 +97,9 @@ const mapStateToProps = (state) => ({
   userName: state.subscribe.user_name,
   email: state.subscribe.email,
   password: state.subscribe.password,
-  isSuccessSubscribe: state.subscribe.isSuccessSubscribe
+  isSuccessSubscribe: state.subscribe.isSuccessSubscribe,
+  errorMessageSubscribe: state.subscribe.errorMessageSubscribe,
+  modaleVisibilitySubscribe: state.subscribe.modaleVisibilitySubscribe
 });
 
 const mapDispatchToProps = (dispatch) => ({

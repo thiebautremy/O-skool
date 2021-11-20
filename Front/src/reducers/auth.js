@@ -8,8 +8,8 @@ import {
 } from '../actions/auth';
 
 export const initialState = {
-    email: '',
-    password: '',
+    email: 're@re.com',
+    password: 're',
     isLogged: false,
     errorModal: false,
     messageErrorModal: '',

@@ -21,8 +21,19 @@ export const CHANGE_ERROR_MODAL = 'CHANGE_ERROR_MODAL';
 export const CHANGE_MESSAGE_ERROR_MODAL = 'CHANGE_MESSAGE_ERROR_MODAL';
 
 export const HANDLE_SUBMIT = 'HANDLE_SUBMIT';
+//Subscribe
+export const CHANGE_ERROR_MESSAGE_SUBSCRIBE = 'CHANGE_ERROR_MESSAGE_SUBSCRIBE'
+export const CHANGE_MODAL_VISIBILITY_SUBSCRIBE = 'CHANGE_MODAL_VISIBILITY_SUBSCRIBE'
 // ACTIONS CREATOR
 
+export const changeModalVisibilitySubscribe = (value)=> ({
+  type: CHANGE_MODAL_VISIBILITY_SUBSCRIBE,
+  value
+})
+export const changeErrorMessageSubscribe = (value)=> ({
+  type: CHANGE_ERROR_MESSAGE_SUBSCRIBE,
+  value
+})
 export const changeMessageErrorModal = (value) => ({
   type: CHANGE_MESSAGE_ERROR_MODAL,
   value

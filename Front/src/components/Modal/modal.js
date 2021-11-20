@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, Header, Icon, Modal } from 'semantic-ui-react'
-import { changeErrorModal, changeMessageErrorModal } from '../../actions/auth'
+import { changeErrorModal, changeMessageErrorModal, changeModalVisibilitySubscribe,changeErrorMessageSubscribe } from '../../actions/auth'
 import { changeConfirmDeleteModal } from '../../actions/app'
 import { connect } from 'react-redux';
 
@@ -11,13 +11,17 @@ function ModalMessage({
   handleYes,
   handeChangeErrorModal,
   handleChangeMessageErrorModal,
-  handleChangeConfirmDeleteModal
+  handleChangeConfirmDeleteModal,
+  handleChangeErrorMessageSubscribe,
+  handleChangeModalVisibilitySubscribe
 }) {
   const [open, setOpen] = React.useState(true)
   const handleOnClose = () => {
     handeChangeErrorModal(false);
     handleChangeConfirmDeleteModal(false);
     handleChangeMessageErrorModal('');
+    handleChangeErrorMessageSubscribe('');
+    handleChangeModalVisibilitySubscribe(false);
     setOpen(false);
   }
   return (
@@ -67,6 +71,12 @@ const mapDispatchToProps = (dispatch) => ({
     },
     handleChangeConfirmDeleteModal: (value) => {
       dispatch(changeConfirmDeleteModal(value))
+    },
+    handleChangeModalVisibilitySubscribe: (value) => {
+      dispatch(changeModalVisibilitySubscribe(value))
+    },
+    handleChangeErrorMessageSubscribe: (value) => {
+      dispatch(changeErrorMessageSubscribe(value))
     }
 })
   
