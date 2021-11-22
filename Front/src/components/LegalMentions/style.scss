@@ -17,3 +17,12 @@
         font-weight: bold;
     }
 }
+
+@media (max-width: 770px) {
+    .LegalMentions{
+        padding: 2rem 0 0;
+        & article{
+            padding: 0.5em;
+        }
+    }
+  }

@@ -7,7 +7,6 @@ import {
     CHANGE_CONFIRM_DELETE_MODAL,
     CHANGE_SUCCESS_DELETE
   } from '../actions/app';
-import { CHANGE_ERROR_MODAL } from '../actions/auth';
   
   export const initialState = {
       students: [],

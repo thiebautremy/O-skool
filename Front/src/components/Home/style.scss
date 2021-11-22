@@ -113,10 +113,13 @@
 }
 @media (max-width: 770px) {
   .home__main {
+
+    padding: 0rem;
     &__title {
       font-size: 1.5em;
     }
     &__section {
+      border-radius: 0rem;
     &__text {
       font-size: 1em;
     }
@@ -128,6 +131,10 @@
   .footer {
     font-size: 1.5em;
   }
+
+  .home__main__section__text p {
+    font-size: 1.5em;
+}
 }
 
 #root > div > div.home > main > section{

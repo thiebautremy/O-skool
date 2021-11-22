@@ -5,7 +5,6 @@ import {
   changeErrorModal,
   changeMessageErrorModal
 } from '../actions/auth';
-import {fetchInfosStudentProfil, fetchInfosTeacherProfil } from '../actions/app';
 
 const auth = (store) => (next) => (action) => {
   const state = store.getState();
@@ -41,7 +40,7 @@ const auth = (store) => (next) => (action) => {
 
       })
       .catch((error) => {
-      if(error == 'Error: Request failed with status code 500'){
+      if(error === 'Error: Request failed with status code 500'){
         store.dispatch(changeMessageErrorModal('Utilisateur inconnu'))
         store.dispatch(changeErrorModal(true))
         }

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card, Image} from 'semantic-ui-react';
-import PropTypes from 'prop-types';
 import './style.scss';
 import elvis from '../../assets/elvis.png';
 import { Link } from 'react-router-dom';
@@ -13,11 +12,11 @@ const Student = (
   return (
     
       <Card className="studentsList__list__card"> 
-      <Link 
-      to={{
-    pathname: `/studentDetail/edit/${props.student.id}`
-  }}
-      >
+        <Link 
+          to={{
+              pathname: `/studentDetail/edit/${props.student.id}`
+          }}
+        >
             <Image src={elvis} className="studentsList__list__card__picture" size="small"
               inline
             />
@@ -36,9 +35,7 @@ const Student = (
 
 const mapStateToProps = (state) => {
   return ({
-          isLogged: state.auth.isLogged,
-          // student: state.students.student, 
-  
+          isLogged: state.auth.isLogged
       })
   }
   const mapDispatchToProps = (dispatch) => ({

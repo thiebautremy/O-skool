@@ -43,3 +43,23 @@
 }
 
 
+@media (max-width: 770px) {
+  .header {
+    justify-content: flex-start;
+    border-bottom-right-radius: 0rem;
+    border-bottom-left-radius: 0rem;
+    img {
+      display: none !important;
+    }
+    &__nav{
+      flex-direction: column !important;
+      align-items: start;
+
+      .item,
+      .header__title {
+        padding: 0.2rem;
+        margin: 0;
+      }
+    }
+  }
+}

@@ -47,19 +47,6 @@ function App(props) {
         {props.isLogged ? <Header /> : <NavBar /> }
           <StudentsList />
         </Route>
-        {/* <Route
-            exact
-            path="/studentDetail/edit/:slug"
-            render={
-              ({ match }) => {
-                return (
-                  <Page>
-                    <StudentDetail slug={match.params.slug} />
-                  </Page>
-                );
-              }
-            }
-          /> */}
         {/* Route pour accèder au profil d'un éléve'  */}
         <Route path="/studentDetail/edit/:id" exact>
         {props.isLogged ? <Header /> : <NavBar /> }
@@ -76,7 +63,6 @@ function App(props) {
           {props.isLogged ? <Header /> : <NavBar /> }
             <Contact />
         </Route>
-
       <Footer />  
     </div>    
   );

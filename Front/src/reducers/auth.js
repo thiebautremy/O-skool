@@ -1,5 +1,4 @@
 import { 
-  HANDLE_SUBMIT, 
   HANDLE_CHANGE_AUTH,
   LOGOUT,
   LOGIN,

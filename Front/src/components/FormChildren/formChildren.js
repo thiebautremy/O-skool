@@ -4,14 +4,12 @@ import { Link, Redirect } from 'react-router-dom';
 import { Input, Menu, Icon } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { addChildren } from '../../actions/app';
-import { logOut } from '../../actions/auth';
 import ModalMessage from '../Modal/modal'
 
 import './style.scss';
 
 const FormChildren = ({
-    handleOnSubmit, 
-    handleDeconnexion, 
+    handleOnSubmit,
     isLogged,
     isSuccess,
     errorMessage,
@@ -33,9 +31,7 @@ const FormChildren = ({
         evt.preventDefault();
         handleOnSubmit(firstName, lastName, adress, zipCode, city, email, phone, health, hobbies, classAbr, random);
     };
-    const handleOnDeconnexion = () => {
-         handleDeconnexion();
-    }
+
     return (
         <main className='formChildren'>
         <Link to="/studentsList">
@@ -214,9 +210,6 @@ const mapStateToProps = (state) => ({
   const mapDispatchToProps = (dispatch) => ({
     handleOnSubmit: (firstName, lastName, adress,zipCode, city, email, phone, health, hobbies, classAbr, random) => {
       dispatch(addChildren(firstName, lastName, adress,zipCode, city, email, phone, health, hobbies, classAbr, random));
-    },
-    handleDeconnexion: () => {
-      dispatch(logOut());
     }
   });
   

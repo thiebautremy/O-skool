@@ -28,9 +28,10 @@
     }
     div.ui{
       flex-direction: column !important;
+      align-items: start;
 
       .item {
-        padding: 0.2rem;
+        padding: 0.2rem !important;
       }
     }
   }

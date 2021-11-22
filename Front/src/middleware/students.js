@@ -11,7 +11,6 @@ import {
     DELETE_CHILDREN,
     changeSuccesDelete
    } from '../actions/app';
-import { changeErrorModal, changeMessageErrorModal } from '../actions/auth';
 
 const teacher = (store) => (next) => (action) => {
     // const state =store.getState();
@@ -86,7 +85,7 @@ const teacher = (store) => (next) => (action) => {
               })
               .catch((error) => {
                 console.log(error)
-                if(error == 'Error: Request failed with status code 500'){
+                if(error === 'Error: Request failed with status code 500'){
                   console.log(error)
                   store.dispatch(changeErrorMessageVisibility(true))
                   store.dispatch(changeErrorMessage("Seul les champs 'Problème de santé', 'Loisirs' et 'Divers' peuvent être nuls"))
@@ -115,6 +114,7 @@ const teacher = (store) => (next) => (action) => {
                 // console.log('state middleware', state);
             })
             .catch((error) => console.log(error))
+            break
           }
         default:
             next(action);

@@ -74,4 +74,16 @@
   }
 }
 
+@media (max-width: 770px) {
+  .formChildren__formChildren {
+    &__form {
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      width: min-content;
+      border-radius: 0.5em;
+      }
 
+  }
+}
