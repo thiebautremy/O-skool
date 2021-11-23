@@ -54,7 +54,6 @@ const teacher = (store) => (next) => (action) => {
             break;
           }
           case ADD_CHILDREN: {
-            console.log(`firstName: ${action.firstName}`)
             axios.post(`${ROOT_URL}api/student/add`, {
               headers: {
                 'Access-Control-Allow-Origin': "*",

@@ -30,7 +30,7 @@ class UserRepository extends ServiceEntityRepository
         ')
         -> setParameter('user_email', $email);
         
-        return $query->getScalarResult();
+        return $query->getSingleResult();
     }
     // /**
     //  * @return User[] Returns an array of User objects

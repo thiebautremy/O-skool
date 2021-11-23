@@ -44,7 +44,7 @@ class StudentRepository extends ServiceEntityRepository
         ')
         -> setParameter('student_id', $id);
         
-        return $query->getResult();
+        return $query->getSingleResult();
     }
 
 

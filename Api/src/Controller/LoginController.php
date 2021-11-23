@@ -2,21 +2,12 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Repository\StudentRepository;
 use App\Repository\UserRepository;
-use ErrorException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Core\Exception\CustomUserMessageAuthenticationException;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Serializer\Exception\NotEncodableValueException;
-use Symfony\Component\Serializer\SerializerInterface;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
-use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 
 class LoginController extends AbstractController
 {
@@ -33,7 +24,7 @@ class LoginController extends AbstractController
 
        //? On récupère les passwords
         $passwordInInput = $data['data']['password'];
-        $passwordInDb = $user[0]['password'];
+        $passwordInDb = $user['password'];
 
         //? On vérifie qu'un utilisateur existe dans la bdd avec cet email
         if (count($user) == 0) {
@@ -56,9 +47,6 @@ class LoginController extends AbstractController
                     ],
                 );
             }
-        } 
-
-        
-
+        }
     }
 }

@@ -11,7 +11,7 @@ import {
   export const initialState = {
       students: [],
       student: [],
-      isSuccess: false,
+      isSuccess: true,
       errorMessage: '',
       errorMessageVisibility: false,
       confirmDeleteModal: false,

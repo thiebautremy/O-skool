@@ -9,11 +9,6 @@ use App\Repository\StudentRepository;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Serializer\Exception\NotEncodableValueException;
-use Symfony\Component\Serializer\SerializerInterface;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
-use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 
 class StudentsController extends AbstractController
 {
@@ -32,7 +27,7 @@ class StudentsController extends AbstractController
     /**
      * @Route("/api/studentsList", name="api_studentsList", methods={"GET"})
      */
-    public function getStudents(Request $request, StudentRepository $sr): Response
+    public function getStudents(StudentRepository $sr): Response
     {
             return $this->json($sr->findAllStudents());
     }
@@ -40,9 +35,9 @@ class StudentsController extends AbstractController
     /**
      * @Route("/api/studentsList/{id}", name="api_studentsList_detail")
      */
-    public function getStudent(StudentRepository $sr, Request $request, int $id)
+    public function getStudent(StudentRepository $sr, int $id)
     {
-        return $this->json($sr->findById($id)[0]);
+        return $this->json($sr->findById($id));
     }
 
     /**
