@@ -18,7 +18,6 @@ import { connect } from 'react-redux';
 import 'semantic-ui-css/semantic.min.css'
 
 function App(props) {
-  console.log(props.isLogged)
   return (
     <div className="App">
         <Route path="/" exact>

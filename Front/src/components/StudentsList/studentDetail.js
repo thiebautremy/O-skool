@@ -18,12 +18,9 @@ useEffect(() =>{
     props.fetchStudentDetail(id)
   }
 }, [id])
-console.log(props)
 return (
   <div className="studentDetail">
-    <Link to="/studentsList" 
-    // onClick={props.fetchStudentDetail()}
-    >
+    <Link to="/studentsList" >
       <Menu.Item>
         <Icon name='angle left' /> 
           Retour à la liste des élèves

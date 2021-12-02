@@ -1,5 +1,5 @@
 import './style.scss';
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import { isSuccess, handleChangeAuth, handleSubmit} from '../../actions/auth'
 import { connect } from 'react-redux';
@@ -20,12 +20,25 @@ const Login = ({
   
   const handleOnClick = (event) => {
     event.preventDefault();
-    handleOnSubmit();
+    if(emailIsValid){
+      handleOnSubmit();
+    }
   };
   const handleOnChange = (event) => {
     const value = event.target.value;
     const name = event.target.type;
     handleChange(value, name);
+    if(name === 'email') {
+      const regexEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+            if(event.target.value.match(regexEmail))
+            {
+              setEmailIsValid(true)
+            }
+            else
+            {
+              setEmailIsValid(false)
+            }
+    }
   }
 
   useEffect(() => {
@@ -33,7 +46,7 @@ const Login = ({
       handleIsSuccess(false)
     }, 5000)
   })
-
+  const [emailIsValid, setEmailIsValid] = useState(false)
   return (
       <main className='login'>
       {isLogged && <Redirect to="/" />}
@@ -65,6 +78,8 @@ const Login = ({
               placeholder="Email"
               className="login__login__form__input"
               onChange={handleOnChange}
+              title={"L'email doit être de type email@email.com"}
+              style={emailIsValid ? {backgroundColor: '#198754'} : {backgroundColor: '#DC3545'}}
               />
             <input
               type="password"

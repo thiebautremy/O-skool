@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 class LoginController extends AbstractController
 {
     /**
-     * @Route("/api/user/login_check", name="api_user_login_check", methods={"POST"}, options={"expose"=true})
+     * @Route("/api/user/login_check", name="api_user_login_check", methods={"POST|GET"}, options={"expose"=true})
      * @param Request $request
      * @param RendezVousRepository $rvr
      * @return Response
@@ -29,7 +29,12 @@ class LoginController extends AbstractController
         //? On vérifie qu'un utilisateur existe dans la bdd avec cet email
         if (count($user) == 0) {
             // fail authentication with a custom error
-            return new JsonResponse('user not found', Response::HTTP_NO_CONTENT);
+            return new JsonResponse(
+                [
+                    'response' => "user not found",
+                    'user' => $user
+                ],
+            );
         }
         else {
             //? On compare les passwords entre l'input et la DB et on retourne en conséquence la réponse

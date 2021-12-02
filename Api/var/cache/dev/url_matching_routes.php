@@ -8,7 +8,7 @@
 return [
     false, // $matchHost
     [ // $staticRoutes
-        '/api/user/login_check' => [[['_route' => 'api_user_login_check', '_controller' => 'App\\Controller\\LoginController::loginCheck'], null, ['POST' => 0], null, false, false, null]],
+        '/api/user/login_check' => [[['_route' => 'api_user_login_check', '_controller' => 'App\\Controller\\LoginController::loginCheck'], null, ['POST' => 0, 'GET' => 1], null, false, false, null]],
         '/api/students' => [[['_route' => 'students_list', '_controller' => 'App\\Controller\\StudentsController::findAll'], null, null, null, false, false, null]],
         '/api/studentsList' => [[['_route' => 'api_studentsList', '_controller' => 'App\\Controller\\StudentsController::getStudents'], null, ['GET' => 0], null, false, false, null]],
         '/api/student/add' => [[['_route' => 'api_student_add', '_controller' => 'App\\Controller\\StudentsController::newStudent'], null, ['POST' => 0], null, false, false, null]],

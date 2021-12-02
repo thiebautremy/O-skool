@@ -8,7 +8,6 @@ import { connect } from 'react-redux';
 const Student = (
   props
 ) => {
-  // const birthdayFormated = moment(birthday).format('DD/MM/YYYY');
   return (
     
       <Card className="studentsList__list__card"> 

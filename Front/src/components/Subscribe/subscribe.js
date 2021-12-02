@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -12,8 +12,6 @@ const Subscribe = ({
   email,
   password,
   userName,
-  role,
-  success, 
   handleChange,
   handleChangeUsername,
   submitRegister,
@@ -25,11 +23,26 @@ const Subscribe = ({
     const value = event.target.value;
     const name = event.target.type;
     handleChange(value, name);
+    if(name === 'email') {
+      const regexEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+            if(event.target.value.match(regexEmail))
+            {
+              setEmailIsValid(true)
+            }
+            else
+            {
+              setEmailIsValid(false)
+            }
+    }
   }
  const handleOnSubmit = (evt) => {
     evt.preventDefault();
-    submitRegister()
+    if(emailIsValid){
+      submitRegister()
+    }
   };
+
+  const [emailIsValid, setEmailIsValid] = useState(false)
   return (
         <main className='subscribe'>
         {modaleVisibilitySubscribe && 
@@ -63,6 +76,8 @@ const Subscribe = ({
                   className="subscribe__subscribe__form__input"
                   name={email}
                   onChange={handleOnChange} 
+                  title={"L'email doit être de type email@email.com"}
+                  style={emailIsValid ? {backgroundColor: '#198754'} : {backgroundColor: '#DC3545'}}
                 />
               <label>Mot de passe</label>
                 <input 
@@ -79,7 +94,6 @@ const Subscribe = ({
                 >
                 S'inscrire
               </button>
-              {(success && role === "Parent" && <Redirect to="/parentForm" />)}
             </form> 
           </div>
           {isSuccessSubscribe && <Redirect to="/login" />}
@@ -91,6 +105,13 @@ Subscribe.propTypes = {
   password: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
   submitRegister: PropTypes.func.isRequired,
+  userName: PropTypes.string.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  handleChangeUsername: PropTypes.func.isRequired,
+  submitRegister: PropTypes.func.isRequired,
+  isSuccessSubscribe: PropTypes.bool.isRequired,
+  errorMessageSubscribe: PropTypes.bool.isRequired,
+  modaleVisibilitySubscribe: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({

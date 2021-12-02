@@ -7,8 +7,7 @@ import {Redirect} from 'react-router-dom';
 import { connect } from 'react-redux';
 
 
-const Home = ({handleIsSuccess, isSuccessSubscribe}) => {
-  // console.log(handleGetTeacherTrombi)
+const Home = () => {
   
 return (
       <div className='home'>
