@@ -46,38 +46,4 @@ class SubscribeController extends AbstractController
             );
         }
     }
-    
-    /**
-     * @Route("/api/user/login_check", name="api_user_login_check", methods={"POST"}, options={"expose"=true})
-     */
-    // public function loginCheck(UserRepository $ur, Request $request): JsonResponse
-    // {
-    //     $data = json_decode($request->getContent(), true);
-    //     $user = $ur->findByEmail($data['data']['email']);
-
-    //    //? On récupère les passwords
-    //     $passwordInInput = $data['data']['password'];
-    //     $passwordInDb = $user[0]['password'];
-
-    //     //? On vérifie qu'un utilisateur existe dans la bdd avec cet email
-    //     if(count($ur->findByEmail($data['data']['email'])) > 0){
-    //         //? On compare les passwords entre l'input et la DB et on retourne en conséquence la réponse
-    //         if (password_verify($passwordInInput, $passwordInDb)) {
-    //             return new JsonResponse(
-    //                 [
-    //                     'response' => "password valid",
-    //                     'user' => $user
-    //                 ],
-    //             );
-    //         } else {
-    //             return new JsonResponse(
-    //                 [
-    //                     'response' => "password invalid"
-    //                 ],
-    //             );
-    //         }
-    //     } else {
-    //         throw new ErrorException('user not found');
-    //     }
-    // }
 }

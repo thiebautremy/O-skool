@@ -21,6 +21,7 @@ const auth = (store) => (next) => (action) => {
           password: state.auth.password,
         }
       }).then(response => {
+        console.log(response)
         if(response.data.response === 'password valid') {
           store.dispatch(login(response.data.user.user_name))
           store.dispatch(changeErrorModal(false))
@@ -31,6 +32,7 @@ const auth = (store) => (next) => (action) => {
         }
       })
       .catch((error) => {
+        console.log(error)
         store.dispatch(changeMessageErrorModal('Utilisateur inconnu'))
         store.dispatch(changeErrorModal(true))
       }) 
