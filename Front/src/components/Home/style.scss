@@ -30,17 +30,6 @@
         z-index: -1;
       }
 
-      &::after {
-        content: '';
-        width: 8rem;
-        height: 8rem;
-        position: absolute;
-        background-color: rgba(170, 229, 200, 0.8);
-        bottom: -0.5rem;
-        right: -0.5rem;
-        z-index: -1;
-      }
-
       &__image {
         border-radius: 3em;
       }
