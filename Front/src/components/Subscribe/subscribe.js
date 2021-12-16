@@ -4,7 +4,6 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { handleChangeSubscribe, subscribeSubmit, changeUsername} from '../../actions/auth';
 import ModalMessage from '../Modal/modal'
-// import Input from '../Input/input';
 
 import './style.scss';
 

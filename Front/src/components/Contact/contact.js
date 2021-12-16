@@ -6,10 +6,9 @@ import {
   TextArea,
 } from 'semantic-ui-react'
 import './style.scss';
-import {Redirect} from 'react-router-dom';
 import { connect } from 'react-redux';
 
-const Contact = ({isLogged}) => (
+const Contact = () => (
     <main className="contact">
         <h1>Nous Contacter</h1>
         <Form className="contact__form">
@@ -37,7 +36,6 @@ const Contact = ({isLogged}) => (
         />
         <Form.Field control={Button}>Envoyer</Form.Field>
         </Form>
-        {!isLogged && <Redirect to="/" />}
     </main>
 );
 
